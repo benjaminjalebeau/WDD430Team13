@@ -7,7 +7,7 @@ Team 13's Group Repo for WDD430 Term 2 2025.
 
 ## Technology
 - Front-End: HTML, CSS, JavaScript, Next.js
-- Back-End: Node.js, a database
+- Back-End: Node.js, PostgreSQL
 - Project Management: GitHub Boards
 - Code Management: Git and GitHub Repository
 - Deployment / Cloud Platform: Vercel
