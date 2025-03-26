@@ -95,13 +95,14 @@ async function seedProducts() {
 export async function GET() {
     try {
         //Runs all SQL queries
-        const result = await sql.begin((sql) => [
+        await sql.begin(() => [
             seedUsers(),
             seedReviews(),
             seedProducts(),
         ]);
 
-        return Response.json({ message: 'Database seeded and initialized'}); // If successful.
+
+        return Response.json({ message: 'Database seeded and initialized +'}); // If successful.
     } catch (error) {
         return Response.json({ error }, { status: 500 }) // If there was an error
     }
