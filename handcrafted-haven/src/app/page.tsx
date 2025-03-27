@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Navbar from "../components/Navbar"; // Adjusted the path to match the correct casing
 
 export default function Home() {
