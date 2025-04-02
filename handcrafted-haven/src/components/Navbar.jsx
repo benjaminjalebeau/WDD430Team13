@@ -1,9 +1,20 @@
 'use client';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useSession, signOut } from 'next-auth/react';
 
-const Navbar = () => {
+
+
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const links = [
+    {name: 'Home', href: '#'},
+    {name: 'Products', href: '#'},
+    {name: 'Artisans', href: '#'},
+    {name: 'Login', href: '/login'}
+  
+  ]
 
   return (
     <header className="bg-gray-100 border-b border-gray-300">
@@ -36,7 +47,6 @@ const Navbar = () => {
               </a>
             ))}
           </div>
-
           {/* Search Bar */}
           <form className="hidden sm:flex items-center space-x-2">
             <input
@@ -57,4 +67,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+
