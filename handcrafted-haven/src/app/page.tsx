@@ -1,8 +1,14 @@
 import Link from "next/link";
 import Navbar from "../components/Navbar"; 
 import Footer from "../components/Footer"; 
+import Product from "../components/Product";
+import { products } from "./lib/placeholder-data";
 
 export default function Home() {
+  // Get the 3 latest products (sorted by listedDate)
+  const latestProducts = [...products]
+    .sort((a, b) => new Date(b.listedDate).getTime() - new Date(a.listedDate).getTime())
+    .slice(0, 3)
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
       <Navbar /> {/* NavBar component */}
@@ -38,12 +44,29 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Handcrafted Haven</h1>
-          <p className="text-lg text-gray-700">
-            Get started by editing <code className="bg-gray-200 px-2 py-1 rounded">src/app/page.tsx</code>.
-          </p>
-        </div>
+
+        {/* Latest Products Section */}
+        <section className="bg-gray-100 py-12">
+          <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">
+            Explore Our Latest Products
+            </h2>
+            <h2 className="text-2xl text-gray-600 mb-4">
+            Each piece is made with care and attention to detail.
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {latestProducts.map((product) => (
+                <Product
+                  key={product.id}
+                  description={product.description}
+                  price={product.price}
+                  forSale={product.forSale}
+                  imageURL={product.imageURL}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <Footer /> {/* Footer component */}
     </div>
