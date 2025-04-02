@@ -1,9 +1,19 @@
 'use client';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Here is the list of links that will be generated below.
+  const links = [
+    {name: 'Home', href: '/'},
+    {name: 'Products', href: '#'},
+    {name: 'Artisans', href: '#'},
+  
+  ]
 
   return (
     <header className="bg-gray-100 border-b border-gray-300">
@@ -26,15 +36,31 @@ const Navbar = () => {
           {/* Navbar Links */}
           {/* Need to verify the colors first with the Team */}
           <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:flex sm:items-center sm:space-x-4`}>
-            {['Home', 'Products', 'Artisans', 'Login'].map((link) => (
+            {links.map((link) => (
               <a
-                key={link}
-                href="#"
+                key={link.name}
+                href={link.href}
                 className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
               >
-                {link}
+                {link.name}
               </a>
             ))}
+            {/* Sign in our Out buttons */}
+            {/* the button styling can be adjusted as needed, I just copied the current styling. */}
+            {session ? (
+              <>
+                
+                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+                  Sign Out
+                </button>
+                <span className="mr-4">Hello, {session.user?.name}</span>
+              </>
+            ) : (
+              <button onClick={() => signIn()} className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+                Sign In
+              </button>
+            )}
+            
           </div>
 
           {/* Search Bar */}
@@ -50,6 +76,7 @@ const Navbar = () => {
             >
               Search
             </button>
+            
           </form>
         </div>
       </nav>
