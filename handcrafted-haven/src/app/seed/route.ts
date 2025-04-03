@@ -20,6 +20,7 @@ async function seedUsers() {
         password TEXT NOT NULL,
         user_type VARCHAR(255) NOT NULL,
         bio VARCHAR(255)
+        photoURL VARCHAR(255) DEFAULT './placeholder-profile.jpg'
         );
     `;
     //Pulls and iterates through data in seed file.
