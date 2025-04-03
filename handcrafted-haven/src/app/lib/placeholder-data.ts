@@ -6,7 +6,8 @@ const users = [
         email: 'ben@fakemail.com',
         password: 'password',
         userType: 'seller',
-        bio: 'I am a seller who can add items'
+        bio: 'I am a seller who can add items',
+        photoURL: "./placeholder-profile.jpg"
     },
     {
         id: 2,
@@ -14,7 +15,9 @@ const users = [
         email: 'mickael@fakemail.com',
         password: 'password',
         userType: 'seller',
-        bio: 'I am a seller who can add items'
+        bio: 'I am a seller who can add items',
+        photoURL: "./placeholder-profile.jpg"
+        
     },
     {
         id: 3,
@@ -22,7 +25,8 @@ const users = [
         email: 'aaron@fakemail.com',
         password: 'password',
         userType: 'seller',
-        bio: 'I am a seller who can add items'
+        bio: 'I am a seller who can add items',
+        photoURL: "./placeholder-profile.jpg"
     },
     {
         id: 4,
@@ -30,7 +34,8 @@ const users = [
         email: 'juliana@fakemail.com',
         password: 'password',
         userType: 'seller',
-        bio: 'I am a seller who can add items'
+        bio: 'I am a seller who can add items',
+        photoURL: "./placeholder-profile.jpg"
     },
     {
         id: 5,
@@ -38,7 +43,8 @@ const users = [
         email: 'basic@fakemail.com',
         password: 'password',
         userType: 'basic',
-        bio: 'I am a basic user that can add reviews.'
+        bio: 'I am a basic user that can add reviews.',
+        photoURL: "./placeholder-profile.jpg"
     }
 ];
 

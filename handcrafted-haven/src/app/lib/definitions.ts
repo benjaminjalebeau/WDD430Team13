@@ -8,6 +8,7 @@ export type User = {
     password: string;
     userType: 'basic' | 'seller';
     bio: string; // Only will be populated if the user is a seller.
+    photoURL: string; // Optional, will be populated if the user has a profile picture.
 };
 
 export type Review = {
