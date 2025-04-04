@@ -45,7 +45,8 @@ const users = [
 const products = [
     {
         id: 1,
-        description: 'Paper Airplane',
+        name: 'Paper Airplane',
+        description: 'It fies real good',
         userId: users[0].id,
         imageURL: '',
         forSale: true,
@@ -55,7 +56,8 @@ const products = [
     },
     {
         id: 2,
-        description: 'Duct-Tape Ball',
+        name: 'Duct-Tape Ball',
+        description: 'My lifelong project, at least 4 dozen rolls',
         userId: users[0].id,
         imageURL: '',
         forSale: false,
@@ -65,7 +67,8 @@ const products = [
     },
     {
         id: 3,
-        description: 'Stick Figure Drawing',
+        name: 'Stick Figure Drawing',
+        description: 'Worthy for the fridge door.',
         userId: users[0].id,
         imageURL: '',
         forSale: true,
