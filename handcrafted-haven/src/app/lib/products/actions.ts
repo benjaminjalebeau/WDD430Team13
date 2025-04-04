@@ -94,7 +94,7 @@ export async function createProduct(prevState: State, formData: FormData) {
 
     } catch (error) {
         return {
-            message: 'Database Error: Failed to Create Product.',
+            message: error,
           }
     }
     // Revalidating is for making sure that cached/static pages are rerendered. 
