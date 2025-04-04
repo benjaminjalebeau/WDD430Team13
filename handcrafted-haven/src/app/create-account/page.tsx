@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react"
 import { useRouter } from "next/navigation";
-import { createUser } from "../lib/actions";
+import { createUser } from "../lib/users/actions";
 import Navbar from "../../components/Navbar";
 
 
