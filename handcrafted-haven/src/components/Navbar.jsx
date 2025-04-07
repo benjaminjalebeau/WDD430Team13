@@ -10,7 +10,7 @@ const Navbar = () => {
   // Here is the list of links that will be generated below.
   const links = [
     {name: 'Home', href: '/'},
-    {name: 'Products', href: '#'},
+    {name: 'Products', href: '/products/listings'},
     {name: 'Artisans', href: '#'},
   
   ]
