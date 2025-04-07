@@ -19,6 +19,7 @@ const ListingsPage = () => {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [hasNextPage, setHasNextPage] = useState(false); // Track if there is a next page
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -36,6 +37,9 @@ const ListingsPage = () => {
         }
         const data = await response.json();
         setProducts(data.products);
+
+        // Check if there are more products for the next page
+        setHasNextPage(data.products.length === 6); // Assuming 6 is the limit per page
       } catch (err) {
         console.error("Failed to fetch products:", err);
         setError("Failed to load products. Please try again later.");
@@ -55,7 +59,9 @@ const ListingsPage = () => {
   };
 
   const handleNext = () => {
-    router.push(`/products/listings?page=${page + 1}&search=${searchQuery}`);
+    if (hasNextPage) {
+      router.push(`/products/listings?page=${page + 1}&search=${searchQuery}`);
+    }
   };
 
   const handlePrevious = () => {
@@ -72,20 +78,35 @@ const ListingsPage = () => {
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Explore Our Products</h1>
 
           {/* Search Bar */}
-          <form onSubmit={handleSearch} className="mb-6">
-            <input
-              type="text"
-              name="search"
-              defaultValue={searchQuery}
-              placeholder="Search products..."
-              className="w-full px-4 py-2 border rounded-lg text-sm"
-            />
-            <button
-              type="submit"
-              className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            >
-              Search
-            </button>
+          <form onSubmit={handleSearch} className="mb-6 flex items-center">
+            <div className="w-full max-w-md flex">
+              <input
+                type="text"
+                name="search"
+                defaultValue={searchQuery}
+                placeholder="Search products..."
+                className="w-full px-4 py-2 border rounded-l-lg text-sm"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 flex items-center justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-4.35-4.35M16.65 10.65a6 6 0 11-12 0 6 6 0 0112 0z"
+                  />
+                </svg>
+              </button>
+            </div>
           </form>
 
           {/* Error Message */}
@@ -93,12 +114,13 @@ const ListingsPage = () => {
 
           {/* Product Grid */}
           {loading ? (
-            <p>Loading...</p>
+            <h3>Loading...</h3>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
                 <Product
                   key={product.id}
+                  name={product.name}
                   description={product.description}
                   price={product.price}
                   forSale={product.forSale}
@@ -119,7 +141,8 @@ const ListingsPage = () => {
             </button>
             <button
               onClick={handleNext}
-              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              disabled={!hasNextPage}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
             >
               Next
             </button>

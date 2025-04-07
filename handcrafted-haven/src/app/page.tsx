@@ -62,6 +62,7 @@ export default function Home() {
               {latestProducts.map((product) => (
                 <Product
                   key={product.id}
+                  name={product.name} 
                   description={product.description}
                   price={product.price}
                   forSale={product.forSale}
