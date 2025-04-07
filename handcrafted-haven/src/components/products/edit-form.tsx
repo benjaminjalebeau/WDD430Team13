@@ -1,16 +1,18 @@
-'use client';
+'use client'
 
 import Link from 'next/link';
-
-import { createProduct, State } from '@/app/lib/products/actions';
+import {EditState, updateProduct} from '@/app/lib/products/actions'
 import { useActionState } from 'react';
+import {ProductForm} from '@/app/lib/definitions'
 
-//Form for adding new products.
-export default function Form() {
-    const initialState: State = { message: null, errors: {} };
-    const [state, formAction] = useActionState(createProduct, initialState);
+export default function EditProductForm({product}: {product: ProductForm}) {
+    const initialState: EditState = { message: null, errors: {}};
+    const updateProductWithId = updateProduct.bind(null, product.id);
+    const [state, formAction] = useActionState(updateProductWithId, initialState);
 
-    
+    console.log(product);
+
+
     return (
         <form action={formAction} className="w-3/4 max-w-md">
             <div className="rounded-md bg-gray-50 p-4 md:p-6 ">
@@ -25,6 +27,7 @@ export default function Form() {
                             id="name"
                             name="name"
                             type="text"
+                            defaultValue={product.name}
                             aria-describedby='name-error'
                             className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                             required
@@ -50,6 +53,7 @@ export default function Form() {
                         <textarea
                             id="description"
                             name="description"
+                            defaultValue={product.description}
                             rows={3}
                             aria-describedby='description-error'
                             className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
@@ -77,7 +81,7 @@ export default function Form() {
                             id="imageURL"
                             name="imageURL"
                             type="text"
-                            defaultValue={"./placeholder-item.png"}
+                            defaultValue={product.image_url}
                             aria-describedby='image-error'
                             className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                             required
@@ -104,6 +108,7 @@ export default function Form() {
                             id="forSale"
                             name="forSale"
                             type="checkbox"
+                            defaultChecked={product.for_sale === true}
                             className="h-4 w-4 text-blue-600 border-gray-200 rounded"
                             onChange={(e)=> {
                                 const priceInput = document.getElementById('price') as HTMLInputElement;
@@ -123,6 +128,31 @@ export default function Form() {
                     </div>
                 </div>
 
+                {/* Sold CheckBox */}
+                <div className="mb-4"> 
+                    <div className="flex items-center space-x-2">
+                        <label htmlFor="sold" className="block text-sm/6 font-medium text-gray-900">
+                            Has this item been sold?
+                        </label>
+                        <input
+                            id="sold"
+                            name="sold"
+                            type="checkbox"
+                            defaultChecked={product.sold === true}
+                            className="h-4 w-4 text-blue-600 border-gray-200 rounded"
+                        />
+                    </div>
+
+                    <div id="sold-error" aria-live="polite" aria-atomic="true">
+                        {state.errors?.forSale &&
+                        state.errors.forSale.map((error: string) => (
+                            <p className="mt-2 text-sm text-red-500" key={error}>
+                            {error}
+                            </p>
+                        ))}
+                    </div>
+                </div>
+
                 {/* Product Price */}
                 <div className="mb-4"> 
                 <label htmlFor="price" className="block text-sm/6 font-medium text-gray-900">
@@ -133,6 +163,7 @@ export default function Form() {
                             id="price"
                             name="price"
                             type="number"
+                            defaultValue={product.price}
                             step="0.01"
                             placeholder="Enter USD amount"
                             aria-describedby='price-error'
@@ -160,10 +191,9 @@ export default function Form() {
                     >
                     Cancel
                     </Link>
-                    <button type="submit" className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">Submit</button>
+                    <button type="submit" className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">Update</button>
                 </div>
             </div>
         </form>
     )
 }
-
