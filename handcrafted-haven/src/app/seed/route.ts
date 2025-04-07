@@ -19,7 +19,7 @@ async function seedUsers() {
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         user_type VARCHAR(255) NOT NULL,
-        bio VARCHAR(255)
+        bio VARCHAR(255),
         photoURL VARCHAR(255) DEFAULT './placeholder-profile.jpg'
         );
     `;
@@ -68,7 +68,7 @@ async function seedProducts() {
     await sql`
         CREATE TABLE IF NOT EXISTS products (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL
+        name VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         user_id INT NOT NULL,
         image_url VARCHAR(255) NOT NULL,
