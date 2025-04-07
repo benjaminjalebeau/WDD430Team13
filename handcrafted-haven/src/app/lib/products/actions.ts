@@ -41,10 +41,21 @@ const ProductFormSchema = z.object({
 // Intializes form Schemas to be used in creating and updating product functions. 
 // Omitting values that will be automatically generated or populated.
 const CreateProduct = ProductFormSchema.omit({id: true, userId: true, listedDate: true, sold: true });
-//const UpdateProduct = ProductFormSchema.omit({id: true, userId: true, listedDate: true });
+const UpdateProduct = ProductFormSchema.omit({id: true, userId: true, listedDate: true });
 
 //Holds validation errors
 export type State = {
+    errors?: {
+        name?: string[];
+        description?: string[];
+        imageURL?: string[];
+        forSale?: string[];
+        price?: string[];
+    };
+    message?: string | null;
+};
+
+export type EditState = {
     errors?: {
         name?: string[];
         description?: string[];
@@ -102,4 +113,48 @@ export async function createProduct(prevState: State, formData: FormData) {
     revalidatePath('/');
     redirect('/');
 
+};
+
+//Functions the same as createProduct, with different SQL and an added sold boolean.
+export async function updateProduct(
+    id: string,
+    prevState: EditState,
+    formData: FormData,
+) {
+    const validatedFields = UpdateProduct.safeParse({
+        name: formData.get('name'),
+        description: formData.get('description'),
+        imageURL: formData.get('imageURL'),
+        forSale: formData.get('forSale') === 'on',
+        sold: formData.get('sold') === 'on',
+        price: formData.get('price'),
+    })
+
+    if (!validatedFields.success) {
+        return {
+            errors: validatedFields.error.flatten().fieldErrors,
+            message: 'Missing Fields. Failed to Update Product',
+        }
+    }
+
+    const { name, description, imageURL, forSale, sold, price } = validatedFields.data;
+    const priceInCents = price * 100;
+
+    try {
+        await sql`
+            UPDATE products
+            SET name = ${name}, 
+            description = ${description}, 
+            image_url = ${imageURL}, 
+            for_sale = ${forSale}, 
+            sold = ${sold}, 
+            price = ${priceInCents}
+            WHERE id = ${id}
+        `;
+    } catch (error) {
+        return {message: 'Database Error: ' + error}
+    }
+
+    revalidatePath('/');
+    redirect('/');
 };

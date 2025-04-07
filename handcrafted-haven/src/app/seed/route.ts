@@ -71,7 +71,7 @@ async function seedProducts() {
         name VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         user_id INT NOT NULL,
-        image_url VARCHAR(255) NOT NULL,
+        image_url VARCHAR(255) NOT NULL DEFAULT './placeholder-item.png' ,
         for_sale BOOL NOT NULL,
         sold BOOL NOT NULL,
         price INT NOT NULL,

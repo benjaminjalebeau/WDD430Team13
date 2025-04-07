@@ -33,3 +33,13 @@ export type Product = {
     listedDate: string;
 };
 
+export type ProductForm = {
+    id: string;
+    name: string;
+    description: string;
+    image_url: string;
+    for_sale: boolean;
+    sold: boolean;
+    //price should be converted to cents when stored in db.
+    price: number;
+};

@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Form from "@/components/products/create-form";
 import { requireAuth } from "@/app/lib/auth";
 
-export default async function page() {
+export default async function Page() {
     const session = await requireAuth();
     if (!session.user?.email) {
         return (
