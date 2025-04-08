@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { createUser } from "../lib/users/actions";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 
 export default function CreateAccountPage() {
@@ -39,8 +40,15 @@ export default function CreateAccountPage() {
             if (result.success) {
                 router.push("/");
             } else {
-                alert(result.message);
-                router.push("/create-account");
+                if (result.errors) {
+                    const fieldErrors = result.errors;
+                    const firstError = Object.values(fieldErrors)
+                        .map((err: any) => err._errors?.[0])
+                        .find((msg) => !!msg);
+                    setError(firstError || result.message);
+                } else {
+                    setError(result.message);
+                }
             }
         } catch (err) {
             setError("An error occurred. Please try again.");
@@ -151,6 +159,7 @@ export default function CreateAccountPage() {
                     </div>
                 </form>
             </div>
+            <Footer />
         </>
     )
 }
