@@ -61,10 +61,20 @@ export async function GET() {
 
     console.log("Products fetched successfully:", products);
     return NextResponse.json({ products });
-  } catch (error: any) {
-    console.error("Failed to fetch user's products:", error.message || error);
+  } catch (error: unknown) {
+    // Narrow down the error type
+    if (error instanceof Error) {
+      console.error("Failed to fetch user's products:", error.message);
+      return NextResponse.json(
+        { error: "Failed to fetch products", details: error.message },
+        { status: 500 }
+      );
+    }
+
+    // Handle unexpected error types
+    console.error("An unexpected error occurred:", error);
     return NextResponse.json(
-      { error: "Failed to fetch products", details: error.message || error },
+      { error: "An unexpected error occurred" },
       { status: 500 }
     );
   }
