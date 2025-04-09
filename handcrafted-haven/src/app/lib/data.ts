@@ -1,6 +1,6 @@
 import postgres from 'postgres';
 
-import { ProductForm } from './definitions';
+import { ProductForm, ReviewForm } from './definitions';
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 
@@ -31,5 +31,28 @@ export async function fetchProductById(id: string) {
       console.error('Database Error:', error);
       throw new Error('Failed to fetch product.');
     }
+}
+
+//This returns a single review by it's review id.
+export async function fetchReviewById(id: string) {
+  try {
+    const data = await sql<ReviewForm[]>`
+      SELECT
+        reviews.id,
+        reviews.user_id,
+        reviews.product_id,
+        reviews.rating, 
+        reviews.comments
+      FROM reviews
+      WHERE reviews.id = ${id};
+    `;
+
+    const review = data.map((review) => ({...review}));
+
+    return review[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch review.');
+  }
 }
   
