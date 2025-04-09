@@ -1,4 +1,3 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Form from "@/components/products/create-form";
@@ -19,6 +18,12 @@ export default async function Page() {
             <Navbar/>
             <main className="flex justify-center items-center mt-10 mb-10">
                 <Form/>
+                <button
+                    type="submit"
+                    className="bg-[#023047] text-white px-4 py-2 rounded-md hover:bg-[#219EBC] transition"
+                >
+                    Create Account
+                </button>
             </main>
             <Footer/>
         </div>

@@ -82,7 +82,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
           />
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-r-lg hover:bg-blue-600 flex items-center justify-center"
+            className="px-4 py-2 bg-[#023047] text-white rounded-r-lg hover:bg-[#219EBC] flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +128,14 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
         <button
           onClick={handlePrevious}
           disabled={page === 1}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 disabled:opacity-50"
+          className="bg-[#023047] text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-[#219EBC] transition disabled:opacity-50"
         >
           Previous
         </button>
         <button
           onClick={handleNext}
           disabled={!hasNextPage}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50"
+          className="bg-[#023047] text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-[#219EBC] transition disabled:opacity-50"
         >
           Next
         </button>
