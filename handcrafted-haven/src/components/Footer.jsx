@@ -5,12 +5,12 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 border-t border-gray-300 py-6">
+    <footer className="bg-[#8ECAE6] border-t border-gray-300 py-6">
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 sm:mb-0 text-center">
-            <a href="#" className="text-xl font-semibold text-gray-800 hover:text-gray-600">
+            <a href="/" className="text-xl font-semibold text-gray-800 hover:text-gray-600">
               HANDCRAFTED HAVEN
             </a>
 
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-gray-800">
           &copy; {new Date().getFullYear()} Handcrafted Haven. All rights reserved.
         </div>
       </div>

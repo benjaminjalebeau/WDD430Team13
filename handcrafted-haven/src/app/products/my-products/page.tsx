@@ -89,7 +89,7 @@ export default function MyProductsPage() {
                   <div className="absolute top-2 right-2 flex space-x-2">
                     <button
                       onClick={() => handleUpdate(product.id)}
-                      className="px-3 py-1 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                      className="px-3 py-1 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
                     >
                       Update
                     </button>
