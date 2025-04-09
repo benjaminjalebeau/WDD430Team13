@@ -43,3 +43,11 @@ export type ProductForm = {
     //price should be converted to cents when stored in db.
     price: number;
 };
+
+export type ReviewForm = {
+    id: string;
+    user_id: string;
+    product_id: string;
+    rating: number; //Out of 5 stars maybe.
+    comments: string;
+}
