@@ -51,8 +51,11 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">
-                Sign In
+                <button
+                  type="submit"
+                  className="bg-[#023047] text-white p-2 rounded w-full hover:bg-[#219EBC] transition"
+                >
+                  Sign In
                 </button>
             </form>
 

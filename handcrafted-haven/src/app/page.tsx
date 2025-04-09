@@ -33,7 +33,7 @@ export default function Home() {
               {/* Button. Link needs to be reviewed */}
               <Link
                 href="/about"
-                className="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition"
+                className="mt-4 inline-block bg-[#023047] text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-[#219EBC] transition"
               >
                 Learn More
               </Link>
@@ -74,7 +74,7 @@ export default function Home() {
         </section>
 
         {/* Artisans Section */}
-        <section className="bg-gray-100 py-12">
+        <section className="bg-white py-12">
           <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">
               Meet Our Artisans
