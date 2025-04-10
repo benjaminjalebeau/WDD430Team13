@@ -1,18 +1,13 @@
 import React from "react";
+import { ProductProps } from "@/app/lib/definitions";
 
-interface ProductProps {
-  name: string;
-  description: string;
-  price: number;
-  forSale: boolean;
-  imageURL: string;
-}
 
-const Product: React.FC<ProductProps> = ({ name, description, price, forSale, imageURL }) => {
+
+const Product: React.FC<ProductProps> = ({ name, description, price, for_sale, image_url }) => {
   return (
     <div className="border rounded-lg shadow-md p-4 bg-white">
       <img
-        src={imageURL || "/placeholder-item.png"} // Use a placeholder if no image is provided
+        src={image_url || "/placeholder-item.png"} // Use a placeholder if no image is provided
         alt={name}
         className="w-full h-48 object-cover rounded-md mb-4"
       />
@@ -21,10 +16,10 @@ const Product: React.FC<ProductProps> = ({ name, description, price, forSale, im
       <p className="text-sm text-gray-800 font-medium">${price.toFixed(2)}</p>
       <p
         className={`mt-2 text-sm font-medium ${
-          forSale ? "text-green-600" : "text-red-600"
+          for_sale ? "text-green-600" : "text-red-600"
         }`}
       >
-        {forSale ? "Available for Sale" : "Not for Sale"}
+        {for_sale ? "Available for Sale" : "Not for Sale"}
       </p>
     </div>
   );

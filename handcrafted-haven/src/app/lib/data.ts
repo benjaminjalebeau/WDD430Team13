@@ -10,6 +10,7 @@ export async function fetchProductById(id: string) {
       const data = await sql<ProductForm[]>`
         SELECT
           products.id,
+          products.user_id,
           products.name,
           products.description,
           products.image_url,

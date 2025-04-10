@@ -1,19 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Product from "@/components/Product";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ProductData } from "@/app/lib/definitions";
 
-interface ProductData {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  forSale: boolean;
-  imageURL: string;
-}
 
 const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ page, searchQuery }) => {
   const [products, setProducts] = useState<ProductData[]>([]);
@@ -51,18 +42,18 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const search = formData.get("search") as string;
-    router.push(`/products/listings?page=1&search=${search}`);
+    router.push(`/products?page=1&search=${search}`);
   };
 
   const handleNext = () => {
     if (hasNextPage) {
-      router.push(`/products/listings?page=${page + 1}&search=${searchQuery}`);
+      router.push(`/products?page=${page + 1}&search=${searchQuery}`);
     }
   };
 
   const handlePrevious = () => {
     if (page > 1) {
-      router.push(`/products/listings?page=${page - 1}&search=${searchQuery}`);
+      router.push(`/products?page=${page - 1}&search=${searchQuery}`);
     }
   };
 
@@ -116,8 +107,8 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
               name={product.name}
               description={product.description}
               price={product.price}
-              forSale={product.forSale}
-              imageURL={product.imageURL}
+              for_sale={product.for_sale}
+              image_url={product.image_url}
             />
           ))}
         </div>
@@ -144,21 +135,8 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
   );
 };
 
-const ListingsPage = () => {
-  return (
-    <div className="min-h-screen flex flex-col justify-between">
-      <Navbar />
-      <main className="flex-grow">
-        <Suspense fallback={<h3>Loading search parameters...</h3>}>
-          <SearchParamsWrapper />
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
-  );
-};
 
-const SearchParamsWrapper = () => {
+export default function SearchParamsWrapper() {
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get("page") || "1", 10);
   const searchQuery = searchParams.get("search") || "";
@@ -166,4 +144,3 @@ const SearchParamsWrapper = () => {
   return <ListingsPageContent page={page} searchQuery={searchQuery} />;
 };
 
-export default ListingsPage;
