@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import postgres from 'postgres';
 
-// Initialize PostgreSQL connection
+// Initialize PostgreSQL connection /
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 // GET: Fetch all users or a specific user by ID
