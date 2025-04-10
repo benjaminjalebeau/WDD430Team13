@@ -3,7 +3,8 @@ import { useState } from "react"
 import { useRouter } from "next/navigation";
 import { createUser } from "../lib/users/actions";
 import Navbar from "../../components/Navbar";
-
+import Footer from "../../components/Footer";
+import { ZodFormattedError } from "zod";
 
 export default function CreateAccountPage() {
     const router = useRouter();
@@ -39,8 +40,26 @@ export default function CreateAccountPage() {
             if (result.success) {
                 router.push("/");
             } else {
-                alert(result.message);
-                router.push("/create-account");
+                if (result.errors) {
+                    const fieldErrors = result.errors as ZodFormattedError<
+                        {
+                            name: string;
+                            email: string;
+                            password: string;
+                            userType: 'basic' | 'seller';
+                            bio?: string;
+                        },
+                        string
+                    >;
+                
+                    const firstError = Object.values(fieldErrors)
+                        .map((err) => (err && "_errors" in err ? err._errors[0] : undefined))
+                        .find((msg) => !!msg);
+                
+                    setError(firstError || result.message);
+                } else {
+                    setError(result.message);
+                }
             }
         } catch (err) {
             setError("An error occurred. Please try again.");
@@ -151,6 +170,7 @@ export default function CreateAccountPage() {
                     </div>
                 </form>
             </div>
+            <Footer />
         </>
     )
 }

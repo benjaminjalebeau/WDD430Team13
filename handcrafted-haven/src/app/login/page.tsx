@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -57,6 +58,14 @@ export default function LoginPage() {
                 >
                   Sign In
                 </button>
+
+                { /* Link to Create Account Page */ }
+                <p className="text-sm mt-4 text-center">
+                  Don&apos;t have an account? No problem!{" "}
+                  <Link href="/create-account" className="text-blue-600 hover:underline">
+                    Create Account
+                  </Link>
+                </p>
             </form>
 
         </main>
