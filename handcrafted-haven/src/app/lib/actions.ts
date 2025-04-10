@@ -3,7 +3,6 @@
 
 import { getAuthSession } from './auth';
 import { getUser } from './auth-options';
-import { LoggedInUser } from '@/app/lib/definitions'
 
 /*
 Until I figure out how to modify the tokens to inlcude 

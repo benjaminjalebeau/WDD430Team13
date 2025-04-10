@@ -2,7 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
-import type { LoggedInUser, User } from '@/app/lib/definitions';
+import type { LoggedInUser } from '@/app/lib/definitions';
 import postgres from 'postgres';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
