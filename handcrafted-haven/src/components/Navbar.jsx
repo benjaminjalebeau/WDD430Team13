@@ -26,7 +26,7 @@ const Navbar = () => {
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo will go here, Instead of "HANDCRAFTED HAVEN" */}
-          <a href="/" className="text-xl font-semibold text-gray-800 hover:text-gray-600">
+          <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
             HANDCRAFTED HAVEN
           </a>
 

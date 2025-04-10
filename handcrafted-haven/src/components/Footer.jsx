@@ -4,13 +4,20 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
+  const quickLinks = [
+    { name: 'Products', href: '/products/listings' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Help', href: '/help' },
+    { name: 'Contact Us', href: '/contact' },
+  ];
+
   return (
     <footer className="bg-[#8ECAE6] border-t border-gray-300 py-6">
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 sm:mb-0 text-center">
-            <a href="/" className="text-xl font-semibold text-gray-800 hover:text-gray-600">
+            <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
               HANDCRAFTED HAVEN
             </a>
 
@@ -46,15 +53,15 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links. Add more if needed */}
+          {/* Quick Links */}
           <div className="flex flex-col sm:flex-row sm:space-x-6 mb-4 sm:mb-0">
-            {['Products', 'About Us', 'Help', 'Contact Us'].map((link) => (
+            {quickLinks.map((link) => (
               <a
-                key={link}
-                href="#"
+                key={link.name}
+                href={link.href}
                 className="text-gray-800 hover:text-gray-600 text-sm font-medium"
               >
-                {link}
+                {link.name}
               </a>
             ))}
           </div>
