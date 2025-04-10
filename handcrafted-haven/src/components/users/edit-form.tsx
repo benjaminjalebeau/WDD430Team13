@@ -11,7 +11,6 @@ export default function EditProfileForm({ user }: { user: UserForm }) {
         name: user.name,
         email: user.email,
         bio: user.bio || '',
-        photoURL: user.photoURL || '',
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -114,32 +113,6 @@ export default function EditProfileForm({ user }: { user: UserForm }) {
                     <div id="bio-error" aria-live="polite" aria-atomic="true">
                         {state.errors?.bio &&
                             state.errors.bio.map((error: string) => (
-                                <p className="mt-2 text-sm text-red-500" key={error}>
-                                    {error}
-                                </p>
-                            ))}
-                    </div>
-                </div>
-
-                {/* Profile Picture URL */}
-                <div className="mb-4">
-                    <label htmlFor="photoURL" className="block text-sm font-medium text-gray-900">
-                        Profile Picture URL
-                    </label>
-                    <div className="mt-2">
-                        <input
-                            id="photoURL"
-                            name="photoURL"
-                            type="text"
-                            value={formData.photoURL}
-                            onChange={handleChange}
-                            aria-describedby="photoURL-error"
-                            className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
-                        />
-                    </div>
-                    <div id="photoURL-error" aria-live="polite" aria-atomic="true">
-                        {state.errors?.photoURL &&
-                            state.errors.photoURL.map((error: string) => (
                                 <p className="mt-2 text-sm text-red-500" key={error}>
                                     {error}
                                 </p>

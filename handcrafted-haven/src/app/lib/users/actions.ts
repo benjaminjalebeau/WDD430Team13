@@ -47,8 +47,7 @@ export async function updateUser(
             SET
                 name = ${data.name || null},
                 email = ${data.email || null},
-                bio = ${data.bio || null},
-                photo_url = ${data.photoURL || null}
+                bio = ${data.bio || null}
             WHERE id = ${userId}
         `;
 
