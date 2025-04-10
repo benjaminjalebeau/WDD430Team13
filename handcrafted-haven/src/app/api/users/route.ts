@@ -13,7 +13,7 @@ export async function GET(req: Request) {
         if (userId) {
             // Fetch a specific user by ID
             const user = await sql`
-                SELECT id, name, email, bio, photo_url AS "photoURL", user_type AS "userType"
+                SELECT id, name, email, bio, user_type AS "userType"
                 FROM users
                 WHERE id = ${userId}
             `;
@@ -67,7 +67,6 @@ export async function PUT(req: Request) {
                 name = ${name || null},
                 email = ${email || null},
                 bio = ${bio || null},
-                photo_url = ${photoURL || null}
             WHERE id = ${id}
         `;
 
