@@ -35,6 +35,7 @@ export type Product = {
 
 export type ProductForm = {
     id: string;
+    user_id: string;
     name: string;
     description: string;
     image_url: string;
@@ -61,4 +62,21 @@ export type LoggedInUser = {
     user_type: 'basic' | 'seller';
     bio: string; // Only will be populated if the user is a seller.
     photoURL: string;
+}
+
+export interface ProductData {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  for_sale: boolean;
+  image_url: string;
+}
+
+export interface ProductProps {
+  name: string;
+  description: string;
+  price: number;
+  for_sale: boolean;
+  image_url: string;
 }
