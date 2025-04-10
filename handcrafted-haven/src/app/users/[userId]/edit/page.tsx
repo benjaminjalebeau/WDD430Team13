@@ -1,24 +1,22 @@
-import EditProfileForm from '@/components/users/edit-form';
-import { users } from '@/app/lib/placeholder-data'; // Replace with your actual data fetching logic
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { notFound } from 'next/navigation';
+import EditProfileForm from '@/components/users/edit-form';
+import { getUserData } from '@/app/lib/actions';
+import NotAuthorized from '@/components/NotAuthorized';
 
-export default async function Page(props: { params: { userId: string } }) {
-    const { userId } = props.params;
+export default async function Page({ params }: { params: { userId: string } }) {
+    const user = await getUserData();
 
-    // Fetch the user data (replace this with your actual database query)
-    const user = users.find((u) => u.id.toString() === userId);
-
-    if (!user) {
-        notFound();
+    // Check if the user is logged in and authorized
+    if (!user || user.user_type === 'basic' || user.id.toString() !== params.userId) {
+        return <NotAuthorized />;
     }
 
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <Navbar />
             <main className="flex justify-center items-center mt-10 mb-10">
-                <EditProfileForm user={user} />
+                <EditProfileForm user={{ ...user, id: Number(user.id) }} />
             </main>
             <Footer />
         </div>
