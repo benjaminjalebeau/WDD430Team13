@@ -52,6 +52,14 @@ export type ReviewForm = {
     comments: string;
 }
 
+export type UserForm = {
+    id: number;
+    name: string;
+    email: string;
+    bio?: string;
+    photoURL?: string;
+};
+
 //I made this type becuase the DB query returned user_type to an object that expects userType.
 export type LoggedInUser = {
     id: string;
