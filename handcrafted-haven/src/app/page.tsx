@@ -66,8 +66,8 @@ export default function Home() {
                   name={product.name} 
                   description={product.description}
                   price={product.price}
-                  forSale={product.forSale}
-                  imageURL={product.imageURL}
+                  for_sale={product.forSale}
+                  image_url={product.imageURL}
                 />
               ))}
             </div>
