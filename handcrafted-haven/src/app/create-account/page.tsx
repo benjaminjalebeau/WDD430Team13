@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "../lib/users/actions";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-
+import { ZodFormattedError } from "zod";
 
 export default function CreateAccountPage() {
     const router = useRouter();
@@ -41,10 +41,21 @@ export default function CreateAccountPage() {
                 router.push("/");
             } else {
                 if (result.errors) {
-                    const fieldErrors = result.errors;
+                    const fieldErrors = result.errors as ZodFormattedError<
+                        {
+                            name: string;
+                            email: string;
+                            password: string;
+                            userType: 'basic' | 'seller';
+                            bio?: string;
+                        },
+                        string
+                    >;
+                
                     const firstError = Object.values(fieldErrors)
-                        .map((err: any) => err._errors?.[0])
+                        .map((err) => (err && "_errors" in err ? err._errors[0] : undefined))
                         .find((msg) => !!msg);
+                
                     setError(firstError || result.message);
                 } else {
                     setError(result.message);

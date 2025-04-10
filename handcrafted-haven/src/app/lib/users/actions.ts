@@ -30,6 +30,18 @@ export async function createUser(name: string, email: string, password: string, 
     }
 
     try {
+        // checking if the email is already exists in the db
+        const existingUser = await sql`
+            SELECT * FROM users WHERE email = ${email}
+        `;
+
+        if (existingUser.length > 0) {
+            return {
+                success: false,
+                message: 'An account with this email already exists.'
+            };
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10);
 
         await sql`
