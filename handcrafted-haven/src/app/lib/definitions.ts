@@ -51,3 +51,14 @@ export type ReviewForm = {
     rating: number; //Out of 5 stars maybe.
     comments: string;
 }
+
+//I made this type becuase the DB query returned user_type to an object that expects userType.
+export type LoggedInUser = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    user_type: 'basic' | 'seller';
+    bio: string; // Only will be populated if the user is a seller.
+    photoURL: string;
+}
