@@ -11,6 +11,7 @@ export default function Home() {
     .sort((a, b) => new Date(b.listedDate).getTime() - new Date(a.listedDate).getTime())
     .slice(0, 3);
 
+  //This needs to be changed to get stuff from DB
   const artisans = users.filter((user) => user.userType === "seller");
 
   return (

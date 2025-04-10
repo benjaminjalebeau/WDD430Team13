@@ -2,21 +2,21 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
-import type { User } from '@/app/lib/definitions';
+import type { LoggedInUser } from '@/app/lib/definitions';
 import postgres from 'postgres';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 //Checks db for matching email.
-export async function getUser(email: string): Promise<User | undefined> {
+export async function getUser(email: string): Promise<LoggedInUser | undefined> {
     try {
-      const user = await sql<User[]>`SELECT * FROM users WHERE email=${email}`;
+      const user = await sql<LoggedInUser[]>`SELECT * FROM users WHERE email=${email}`;
       return user[0];
     } catch (error) {
       console.error('Failed to fetch user:', error);
       throw new Error('Failed to fetch user.');
     }
-  }
+}
 
 //Config options for next-auth. For right now, we have a simple provider that checks entered credentials against the DB
 // We could also set up Oauth on Github easily as an alternative. 
