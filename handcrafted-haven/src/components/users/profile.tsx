@@ -18,7 +18,7 @@ export default function Profile({ user }: { user: LoggedInUser }) {
             )}
             <div className="flex justify-end mt-6">
                 <Link
-                    href={`/users/${user.id}/edit`}
+                    href={`/profile/edit`}
                     className="px-4 py-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
                 >
                     Edit Profile

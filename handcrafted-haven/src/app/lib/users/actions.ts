@@ -25,7 +25,7 @@ export type EditState = {
 
 // Function to update user
 export async function updateUser(
-    userId: number,
+    userId: string,
     data: { name?: string; email?: string; bio?: string; photoURL?: string }
 ) {
     try {

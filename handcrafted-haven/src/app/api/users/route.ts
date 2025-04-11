@@ -67,6 +67,7 @@ export async function PUT(req: Request) {
                 name = ${name || null},
                 email = ${email || null},
                 bio = ${bio || null},
+                photo_url = ${photoURL || null}
             WHERE id = ${id}
         `;
 

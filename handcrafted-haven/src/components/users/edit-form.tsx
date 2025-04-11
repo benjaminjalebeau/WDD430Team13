@@ -4,9 +4,9 @@ import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import { useState } from 'react';
 import { EditState, updateUser } from '@/app/lib/users/actions';
-import { UserForm } from '@/app/lib/definitions';
+import { LoggedInUser } from '@/app/lib/definitions';
 
-export default function EditProfileForm({ user }: { user: UserForm }) {
+export default function EditProfileForm({ user }: { user: LoggedInUser }) {
     const router = useRouter(); 
     const [state, setState] = useState<EditState>({ message: null, errors: {} });
     const [formData, setFormData] = useState({

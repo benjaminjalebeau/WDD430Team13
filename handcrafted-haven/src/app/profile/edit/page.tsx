@@ -6,10 +6,10 @@ import NotAuthorized from '@/components/NotAuthorized';
 
 // I know this is not the best way to do it, but I don't know how to change it
 
-export default async function Page({ params }: { params: { userId: string } }) {
+export default async function Page() {
     const user = await getUserData();
 
-    if (!user || user.user_type === 'basic' || user.id.toString() !== params.userId) {
+    if (!user || user.user_type === 'basic' ) {
         return <NotAuthorized />;
     }
 
@@ -17,7 +17,7 @@ export default async function Page({ params }: { params: { userId: string } }) {
         <div className="min-h-screen flex flex-col justify-between">
             <Navbar />
             <main className="flex justify-center items-center mt-10 mb-10">
-                <EditProfileForm user={{ ...user, id: Number(user.id) }} />
+                <EditProfileForm user={user} />
             </main>
             <Footer />
         </div>
