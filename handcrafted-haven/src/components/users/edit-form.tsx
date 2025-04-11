@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
 import { useState } from 'react';
 import { EditState, updateUser } from '@/app/lib/users/actions';
 import { UserForm } from '@/app/lib/definitions';
 
 export default function EditProfileForm({ user }: { user: UserForm }) {
+    const router = useRouter(); 
     const [state, setState] = useState<EditState>({ message: null, errors: {} });
     const [formData, setFormData] = useState({
         name: user.name,
@@ -24,6 +26,7 @@ export default function EditProfileForm({ user }: { user: UserForm }) {
 
         if (result.success) {
             setState({ message: result.message, errors: {} });
+            router.push('/profile');
         } else {
             setState({
                 message: result.message,

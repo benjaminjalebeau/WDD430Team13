@@ -4,10 +4,11 @@ import EditProfileForm from '@/components/users/edit-form';
 import { getUserData } from '@/app/lib/actions';
 import NotAuthorized from '@/components/NotAuthorized';
 
+// I know this is not the best way to do it, but I don't know how to change it
+
 export default async function Page({ params }: { params: { userId: string } }) {
     const user = await getUserData();
 
-    // Check if the user is logged in and authorized
     if (!user || user.user_type === 'basic' || user.id.toString() !== params.userId) {
         return <NotAuthorized />;
     }
