@@ -38,8 +38,8 @@ export default async function Page( props: {params: Promise<{ productId: string 
                         name={product.name}
                         description={product.description}
                         price={product.price}
-                        forSale={product.for_sale}
-                        imageURL={product.image_url}
+                        for_sale={product.for_sale}
+                        image_url={product.image_url}
                         />
                     </div>
                 </div>
