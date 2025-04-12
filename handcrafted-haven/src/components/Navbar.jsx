@@ -23,12 +23,13 @@ const Navbar = () => {
   const links = [
     {name: 'Home', href: '/'},
     {name: 'Products', href: '/products'},
-    {name: 'Artisans', href: '#'},
+    {name: 'My profile', href: '/profile'},
   ];
 
   return (
     <header className="bg-tertiary border-b-5 border-secondary">
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+
         <div className="flex items-center justify-between h-16">          
           <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
             <Image 
@@ -62,7 +63,7 @@ const Navbar = () => {
             {/* Sign in or Out buttons */}
             {session ? (
               <>
-                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
                   Sign Out
                 </button>
                 <span className="mr-4">Hello, {session.user?.name}</span>
@@ -82,7 +83,7 @@ const Navbar = () => {
                 name="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search products or artisans..."
                 className="w-full px-4 py-2 border rounded-l-lg text-sm"
               />
               <button

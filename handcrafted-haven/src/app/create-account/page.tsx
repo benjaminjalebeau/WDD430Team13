@@ -157,13 +157,13 @@ export default function CreateAccountPage() {
                     )}
 
                     {/* Error Message */}
-                    {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+                    {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
 
                     {/* Submit Button */}
                     <div className="mt-6 flex justify-end">
                         <button 
                             type="submit" 
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                            className="bg-[#023047] text-white px-4 py-2 rounded-md hover:bg-[#219EBC]"
                         >
                             Create Account
                         </button>

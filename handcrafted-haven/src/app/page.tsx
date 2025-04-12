@@ -86,7 +86,7 @@ export default async function Home() {
         </section>
 
         {/* Artisans Section */}
-        <section className="bg-white py-12">
+        <section className="bg-white py-20">
           <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">
               Meet Our Artisans
