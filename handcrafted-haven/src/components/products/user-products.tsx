@@ -71,11 +71,13 @@ export default function UserProducts() {
               {products.map((product) => (
                 <div key={product.id} className="relative border rounded-lg shadow-md p-4 bg-white">
                   <Product
-                    name={product.name}
+                    product_name={product.product_name}
                     description={product.description}
                     price={product.price}
                     for_sale={product.for_sale}
                     image_url={product.image_url}
+                    artisan_name={product.artisan_name}
+                    formattedDate={product.formattedDate} 
                   />
                   <div className="absolute top-2 right-2 flex space-x-2">
                     <button

@@ -74,17 +74,23 @@ export type LoggedInUser = {
 
 export interface ProductData {
   id: string;
-  name: string;
+  user_id: string;
+  product_name: string;
   description: string;
   price: number;
   for_sale: boolean;
   image_url: string;
+  artisan_name: string;
+  formattedDate: string;
+  listed_date: Date;
 }
 
 export interface ProductProps {
-  name: string;
+  product_name: string;
   description: string;
   price: number;
   for_sale: boolean;
   image_url: string;
+  artisan_name: string;
+  formattedDate: string;
 }
