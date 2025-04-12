@@ -1,31 +1,31 @@
 import React from "react";
+import { ProductProps } from "@/app/lib/definitions";
 
-interface ProductProps {
-  name: string;
-  description: string;
-  price: number;
-  forSale: boolean;
-  imageURL: string;
-}
 
-const Product: React.FC<ProductProps> = ({ name, description, price, forSale, imageURL }) => {
+
+const Product: React.FC<ProductProps> = ({ product_name, description, price, for_sale, image_url, artisan_name, formattedDate }) => {
   return (
     <div className="border rounded-lg shadow-md p-4 bg-white">
       <img
-        src={imageURL || "/placeholder-item.png"} // Use a placeholder if no image is provided
-        alt={name}
-        className="w-full h-48 object-cover rounded-md mb-4"
+        src={image_url || "/placeholder-item.png"} // Use a placeholder if no image is provided
+        alt={product_name}
+        className="w-full h-48 object-cover rounded-md mb-1"
       />
-      <h3 className="text-lg font-bold text-gray-800 mb-2">{name}</h3> 
+      <p className="text-right text-xs italic text-gray-500">By: {artisan_name}</p>
+      <h3 className="text-lg font-bold text-gray-800 mb-2">{product_name}</h3> 
       <p className="text-sm text-gray-600 mb-2">{description}</p> 
       <p className="text-sm text-gray-800 font-medium">${price.toFixed(2)}</p>
-      <p
-        className={`mt-2 text-sm font-medium ${
-          forSale ? "text-green-600" : "text-red-600"
-        }`}
-      >
-        {forSale ? "Available for Sale" : "Not for Sale"}
-      </p>
+      <div className="flex justify-between">
+        <p
+          className={`mt-2 text-sm font-medium ${
+            for_sale ? "text-green-600" : "text-red-600"
+          }`}
+        >
+          {for_sale ? "Available for Sale" : "Not for Sale"} 
+        </p>
+        <span className="mt-2 text-right text-sm italic text-gray-500"> Listed: {formattedDate}</span>
+        
+      </div>
     </div>
   );
 };

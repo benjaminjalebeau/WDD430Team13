@@ -2,32 +2,42 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   // Define the handleSearch function
   const handleSearch = (event) => {
     event.preventDefault();
     console.log('Search query:', searchQuery);
+    router.push(`/products?page=1&search=${searchQuery}`);
     // Add additional logic for handling the search query if needed
+    setSearchQuery('');
   };
 
   const links = [
     {name: 'Home', href: '/'},
-    {name: 'Products', href: '/products/listings'},
-    {name: 'Artisans', href: '#'},
+    {name: 'Products', href: '/products'},
+    {name: 'My profile', href: '/profile'},
   ];
 
   return (
-    <header className="bg-[#8ECAE6] border-b border-gray-300">
+    <header className="bg-tertiary border-b-5 border-secondary">
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo will go here, Instead of "HANDCRAFTED HAVEN" */}
+
+        <div className="flex items-center justify-between h-16">          
           <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
-            HANDCRAFTED HAVEN
+            <Image 
+             src="/images/logo-handcrafted-haven.png"
+             width={250}
+             height={58}
+             alt="Handcrafted Haven"
+            />
           </a>
 
           {/* Toggle Button for Mobile */}
@@ -45,7 +55,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                className="block bg-primary text-gray-800 hover:bg-secondary px-3 py-2 rounded-md text-sm font-medium"
               >
                 {link.name}
               </a>
@@ -53,7 +63,7 @@ const Navbar = () => {
             {/* Sign in or Out buttons */}
             {session ? (
               <>
-                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
                   Sign Out
                 </button>
                 <span className="mr-4">Hello, {session.user?.name}</span>
@@ -73,7 +83,7 @@ const Navbar = () => {
                 name="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search products or artisans..."
                 className="w-full px-4 py-2 border rounded-l-lg text-sm"
               />
               <button

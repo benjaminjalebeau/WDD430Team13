@@ -13,12 +13,33 @@ export async function GET(req: Request) {
     const offset = (page - 1) * limit;
 
     // Query to fetch products with optional search
-    const products = await sql`
-      SELECT * FROM products
-      WHERE description ILIKE ${"%" + search + "%"}
+    const data = await sql`
+      SELECT 
+        products.id,
+        products.user_id,
+        products.name AS product_name,
+        products.description,
+        products.image_url,
+        products.for_sale,
+        products.sold,
+        products.price,
+        products.listed_date,
+        u.name AS artisan_name
+      FROM products
+      INNER JOIN users u ON products.user_id = u.id
+      WHERE description ILIKE ${"%" + search + "%"} 
+        OR products.name ILIKE ${"%" + search + "%"} 
+        OR u.name ILIKE ${"%" + search + "%"}
       ORDER BY listed_date DESC
       LIMIT ${limit} OFFSET ${offset};
     `;
+
+    const products = data.map((product) => ({
+      ...product,
+      // Convert amount from cents to dollars
+      price: product.price / 100,
+      formattedDate: product.listed_date.toISOString().split('T')[0],
+    }));
 
     return NextResponse.json({ products });
   } catch (error) {

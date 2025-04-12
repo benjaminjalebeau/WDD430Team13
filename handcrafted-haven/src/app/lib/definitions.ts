@@ -35,6 +35,7 @@ export type Product = {
 
 export type ProductForm = {
     id: string;
+    user_id: string;
     name: string;
     description: string;
     image_url: string;
@@ -52,6 +53,14 @@ export type ReviewForm = {
     comments: string;
 }
 
+export type UserForm = {
+    id: number;
+    name: string;
+    email: string;
+    bio: string;
+    photoURL: string;
+};
+
 //I made this type becuase the DB query returned user_type to an object that expects userType.
 export type LoggedInUser = {
     id: string;
@@ -61,4 +70,27 @@ export type LoggedInUser = {
     user_type: 'basic' | 'seller';
     bio: string; // Only will be populated if the user is a seller.
     photoURL: string;
+}
+
+export interface ProductData {
+  id: string;
+  user_id: string;
+  product_name: string;
+  description: string;
+  price: number;
+  for_sale: boolean;
+  image_url: string;
+  artisan_name: string;
+  formattedDate: string;
+  listed_date: Date;
+}
+
+export interface ProductProps {
+  product_name: string;
+  description: string;
+  price: number;
+  for_sale: boolean;
+  image_url: string;
+  artisan_name: string;
+  formattedDate: string;
 }
