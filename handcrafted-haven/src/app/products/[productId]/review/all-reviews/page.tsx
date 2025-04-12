@@ -35,6 +35,7 @@ export default async function Page( props: {params: Promise<{ productId: string 
                 <div className="flex justify-center items-center mt-10 mb-10">
                     <div className="w-full max-w-md">
                         <Product
+                        id={product.id}
                         product_name={product.product_name}
                         description={product.description}
                         price={product.price}

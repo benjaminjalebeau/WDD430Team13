@@ -68,6 +68,7 @@ export default async function Home() {
               {latestProducts.map((product) => (
                 <Product
                   key={product.id}
+                  id={product.id}
                   product_name={product.product_name} 
                   description={product.description}
                   price={product.price}

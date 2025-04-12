@@ -104,6 +104,9 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
           {products.map((product) => (
             <Product
               key={product.id}
+              // I was trying to add this because google suggested it but it didn't change the 
+              // undefined return for the URL
+              id= {product.id}
               product_name={product.product_name}
               description={product.description}
               price={product.price}

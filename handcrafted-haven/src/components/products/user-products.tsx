@@ -71,6 +71,7 @@ export default function UserProducts() {
               {products.map((product) => (
                 <div key={product.id} className="relative border rounded-lg shadow-md p-4 bg-white">
                   <Product
+                    id={product.id}
                     product_name={product.product_name}
                     description={product.description}
                     price={product.price}
