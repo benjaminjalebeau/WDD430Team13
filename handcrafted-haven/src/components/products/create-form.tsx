@@ -77,7 +77,7 @@ export default function Form() {
                             id="imageURL"
                             name="imageURL"
                             type="text"
-                            defaultValue={"./placeholder-item.png"}
+                            defaultValue={"/placeholder-item.png"}
                             aria-describedby='image-error'
                             className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                             required
