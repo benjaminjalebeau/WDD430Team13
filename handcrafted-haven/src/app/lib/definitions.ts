@@ -87,7 +87,7 @@ export interface ProductData {
 
 export interface ProductProps {
   // I attempted adding this as a string but I also had to add it under the all-products.tsx page
-  //id: string;
+  id: string;
   product_name: string;
   description: string;
   price: number;
