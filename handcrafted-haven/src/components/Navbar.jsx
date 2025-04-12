@@ -22,7 +22,7 @@ const Navbar = () => {
   const links = [
     {name: 'Home', href: '/'},
     {name: 'Products', href: '/products'},
-    {name: 'Artisans', href: '#'},
+    {name: 'My profile', href: '/profile'},
   ];
 
   return (
@@ -57,7 +57,7 @@ const Navbar = () => {
             {/* Sign in or Out buttons */}
             {session ? (
               <>
-                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
                   Sign Out
                 </button>
                 <span className="mr-4">Hello, {session.user?.name}</span>
@@ -77,7 +77,7 @@ const Navbar = () => {
                 name="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search products or artisans..."
                 className="w-full px-4 py-2 border rounded-l-lg text-sm"
               />
               <button
