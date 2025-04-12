@@ -54,21 +54,21 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                             {/* Creative products */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">50+ Creative Products</h2>
-                                <p className="text-base text-gray-500 leading-6">Explore artistic creations that embody the charm and craftsmanship of handmade products, where beauty meets quality in every detail.</p>
+                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">50+ Creative Products</h2>
+                                <p className="text-base text-gray-700 leading-6">Explore artistic creations that embody the charm and craftsmanship of handmade products, where beauty meets quality in every detail.</p>
                             </div>
 
                             {/* Passionate Sellers */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">15+ Passionate Sellers</h2>
-                                <p className="text-base text-gray-500 leading-6">A thriving community of passionate creators and conscious sellers, dedicated to craftsmanship, 
+                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">15+ Passionate Sellers</h2>
+                                <p className="text-base text-gray-700 leading-6">A thriving community of passionate creators and conscious sellers, dedicated to craftsmanship, 
                                 authenticity, and purpose-driven work.</p>
                             </div>
 
                             {/* Visitors */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">1000+ Visitors</h2>
-                                <p className="text-base text-gray-500 leading-6">Reach a global audience of passionate, conscious consumers who value quality, 
+                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">1000+ Visitors</h2>
+                                <p className="text-base text-gray-700 leading-6">Reach a global audience of passionate, conscious consumers who value quality, 
                                 authenticity, and sustainability.</p>
                             </div>
                         </div>
