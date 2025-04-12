@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useSession, signIn, signOut } from "next-auth/react";
+import Image from 'next/image';
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -22,12 +23,17 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="bg-[#8ECAE6] border-b border-gray-300">
+    <header className="bg-tertiary border-b-5 border-secondary">
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo will go here, Instead of "HANDCRAFTED HAVEN" */}
           <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
-            HANDCRAFTED HAVEN
+            <Image 
+             src="/images/logo-handcrafted-haven.png"
+             width={250}
+             height={58}
+             alt="Handcrafted Haven"
+            />
           </a>
 
           {/* Toggle Button for Mobile */}
@@ -45,7 +51,7 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                className="block bg-primary text-gray-800 hover:bg-secondary px-3 py-2 rounded-md text-sm font-medium"
               >
                 {link.name}
               </a>
