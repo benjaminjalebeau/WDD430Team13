@@ -15,7 +15,7 @@ export async function GET(req: Request) {
     // Query to fetch products with optional search
     const products = await sql`
       SELECT * FROM products
-      WHERE description ILIKE ${"%" + search + "%"}
+      WHERE description ILIKE ${"%" + search + "%"} OR name ILIKE ${"%" + search + "%"}
       ORDER BY listed_date DESC
       LIMIT ${limit} OFFSET ${offset};
     `;
