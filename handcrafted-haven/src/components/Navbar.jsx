@@ -29,9 +29,13 @@ const Navbar = () => {
     <header className="bg-[#8ECAE6] border-b border-gray-300">
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo will go here, Instead of "HANDCRAFTED HAVEN" */}
-          <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
-            HANDCRAFTED HAVEN
+           {/* Logo */}
+           <a href="/" className="flex items-center">
+            <img
+              src="/logo-handcrafted-haven.jpg" 
+              alt="Handcrafted Haven Logo"
+              className="h-10 w-auto" 
+            />
           </a>
 
           {/* Toggle Button for Mobile */}
