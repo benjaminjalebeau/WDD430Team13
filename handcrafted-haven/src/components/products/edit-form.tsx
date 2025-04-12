@@ -1,5 +1,6 @@
 'use client'
 
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {EditState, updateProduct} from '@/app/lib/products/actions'
 import { useActionState } from 'react';
@@ -10,8 +11,17 @@ export default function EditProductForm({product}: {product: ProductForm}) {
     const updateProductWithId = updateProduct.bind(null, product.id);
     const [state, formAction] = useActionState(updateProductWithId, initialState);
 
-    console.log(product);
+    //For automatically checking the for sale checkbox and enabling/disabling the price input
+    const [isForSale] = useState(product.for_sale);
 
+    useEffect(() => {
+        const priceInput = document.getElementById('price') as HTMLInputElement;
+        if (priceInput) {
+          priceInput.disabled = !isForSale;
+          priceInput.required = isForSale;
+        }
+      }, [isForSale]);
+    
 
     return (
         <form action={formAction} className="w-3/4 max-w-md">
@@ -168,7 +178,6 @@ export default function EditProductForm({product}: {product: ProductForm}) {
                             placeholder="Enter USD amount"
                             aria-describedby='price-error'
                             className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
-                            disabled
                         />
                         
                     </div>
@@ -183,11 +192,11 @@ export default function EditProductForm({product}: {product: ProductForm}) {
                     </div>
                 </div>
                 <div className="mt-6 flex justify-end gap-4">
-{/*Need to update this link to artisan's product page when added*/}
+
     
                     <Link
 
-                        href="/"
+                        href="/products/my-products"
                         className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
                     >
                         Cancel

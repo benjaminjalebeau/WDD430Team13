@@ -138,3 +138,25 @@ export async function updateReview(
     revalidatePath('/');
     redirect('/');
 };
+
+type Review = {
+    id: number;
+    user_id: number;
+    product_id: number;
+    rating: number;
+    comments: string;
+    date: string | Date;
+    user_name: string;
+}
+
+export async function fetchReviewsByProductId(productId: string): Promise<Review[]> {
+    const id = Number(productId);
+    const result = await sql<Review[]>`
+        SELECT r.*, u.name AS user_name
+        FROM reviews r
+        JOIN users u ON r.user_id = u.id
+        WHERE r.product_id = ${id}
+        ORDER BY r.date DESC
+    `;
+    return result;
+};

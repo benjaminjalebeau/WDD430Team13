@@ -3,30 +3,33 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useSession, signIn, signOut } from "next-auth/react";
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
 
   // Define the handleSearch function
   const handleSearch = (event) => {
     event.preventDefault();
     console.log('Search query:', searchQuery);
+    router.push(`/products?page=1&search=${searchQuery}`);
     // Add additional logic for handling the search query if needed
+    setSearchQuery('');
   };
 
   const links = [
     {name: 'Home', href: '/'},
-    {name: 'Products', href: '/products/listings'},
+    {name: 'Products', href: '/products'},
     {name: 'Artisans', href: '#'},
   ];
 
   return (
     <header className="bg-tertiary border-b-5 border-secondary">
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo will go here, Instead of "HANDCRAFTED HAVEN" */}
+        <div className="flex items-center justify-between h-16">          
           <a href="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
             <Image 
              src="/images/logo-handcrafted-haven.png"
