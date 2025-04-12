@@ -4,6 +4,11 @@ import Footer from "../components/Footer";
 import Product from "../components/Product";
 import Artisan from "../components/Artisan";
 import { fetchProducts, fetchSellers } from "./lib/data";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Homepage | Handcrafted Haven',
+  };
 
 
 export default async function Home() {

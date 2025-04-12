@@ -1,6 +1,10 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'About Us',
+  };
 export default function AboutPage() {
     return (
         <div className="min-h-screen flex flex-col justify-between bg-gray-100">
