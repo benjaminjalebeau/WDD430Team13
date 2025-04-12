@@ -3,6 +3,11 @@ import Footer from '@/components/Footer';
 import Profile from '@/components/users/profile';
 import { getUserData } from '@/app/lib/actions';
 import NotAuthorized from '@/components/NotAuthorized';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'My Profile',
+  };
 
 export default async function ProfilePage() {
     const user = await getUserData();
