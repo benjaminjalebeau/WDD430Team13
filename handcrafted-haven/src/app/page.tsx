@@ -74,7 +74,7 @@ export default async function Home() {
               ))}
             </div>
             {/* Button to go to the product page */}
-    <div className="mt-8 flex justify-center">
+    <div className="mt-8 flex justify-left">
       <Link
         href="/products"
         className="px-6 py-3 bg-[#023047] text-white text-lg font-medium rounded-lg hover:bg-[#219EBC] transition"
