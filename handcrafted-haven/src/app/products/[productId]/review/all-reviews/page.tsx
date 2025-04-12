@@ -1,4 +1,4 @@
-import {fetchProductById} from '@/app/lib/data';
+import {fetchProductDataById} from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { fetchReviewsByProductId } from '@/app/lib/reviews/actions';
 import Navbar from '@/components/Navbar';
@@ -20,7 +20,7 @@ export default async function Page( props: {params: Promise<{ productId: string 
     const params = await props.params;
     const id = params.productId;
     console.log(id);
-    const product= await fetchProductById(id);
+    const product= await fetchProductDataById(id);
     const reviews = await fetchReviewsByProductId(id);
 
     if (!product) {
@@ -35,11 +35,13 @@ export default async function Page( props: {params: Promise<{ productId: string 
                 <div className="flex justify-center items-center mt-10 mb-10">
                     <div className="w-full max-w-md">
                         <Product
-                        name={product.name}
+                        product_name={product.product_name}
                         description={product.description}
                         price={product.price}
                         for_sale={product.for_sale}
                         image_url={product.image_url}
+                        artisan_name={product.artisan_name}
+                        formattedDate={product.formattedDate}  
                         />
                     </div>
                 </div>

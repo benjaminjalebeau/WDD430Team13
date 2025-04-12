@@ -3,16 +3,16 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"; 
 import Product from "../components/Product";
 import Artisan from "../components/Artisan";
-import { products, users } from "./lib/placeholder-data";
+import { fetchProducts, fetchSellers } from "./lib/data";
 
-export default function Home() {
+
+export default async function Home() {
   // Get the 3 latest products (sorted by listedDate)
-  const latestProducts = [...products]
-    .sort((a, b) => new Date(b.listedDate).getTime() - new Date(a.listedDate).getTime())
-    .slice(0, 3);
+  const latestProducts = (await fetchProducts()).slice(0, 3);
+  console.log(latestProducts);
 
   //This needs to be changed to get stuff from DB
-  const artisans = users.filter((user) => user.userType === "seller");
+  const artisans = (await fetchSellers()).slice(0, 4);
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-100">
@@ -63,11 +63,13 @@ export default function Home() {
               {latestProducts.map((product) => (
                 <Product
                   key={product.id}
-                  name={product.name} 
+                  product_name={product.product_name} 
                   description={product.description}
                   price={product.price}
-                  for_sale={product.forSale}
-                  image_url={product.imageURL}
+                  for_sale={product.for_sale}
+                  image_url={product.image_url}
+                  artisan_name={product.artisan_name}
+                  formattedDate={product.formattedDate}  
                 />
               ))}
             </div>

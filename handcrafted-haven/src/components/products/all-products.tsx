@@ -104,11 +104,13 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string }> = ({ 
           {products.map((product) => (
             <Product
               key={product.id}
-              name={product.name}
+              product_name={product.product_name}
               description={product.description}
               price={product.price}
               for_sale={product.for_sale}
               image_url={product.image_url}
+              artisan_name={product.artisan_name}
+              formattedDate={product.formattedDate} 
             />
           ))}
         </div>
