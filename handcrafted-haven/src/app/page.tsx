@@ -73,7 +73,7 @@ export default async function Home() {
                 />
               ))}
             </div>
-            {/* Button to go to the product page */}
+            {/* Button to go to the product page. */}
     <div className="mt-8 flex justify-left">
       <Link
         href="/products"
