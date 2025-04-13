@@ -66,6 +66,7 @@ export default function UserProducts() {
             <Link
               href="/products/create"
               className="inline-block mb-6 rounded-md bg-[#023047] px-4 py-2 text-sm text-white transition-colors hover:bg-[#219EBC]"
+              aria-label="Navigate to the create product page."
             >
               Add New Product
             </Link>
@@ -92,12 +93,14 @@ export default function UserProducts() {
                     <button
                       onClick={() => handleUpdate(product.id)}
                       className="px-3 py-1 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
+                      aria-label={"Update product named "+ product.product_name}
                     >
                       Update
                     </button>
                     <button
                       onClick={() => handleDelete(product.id)}
                       className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600"
+                      aria-label={"Delete product named "+ product.product_name}
                     >
                       Delete
                     </button>

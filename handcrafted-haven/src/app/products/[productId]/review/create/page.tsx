@@ -5,6 +5,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getUserData } from "@/app/lib/actions";
 import NotAuthorized from "@/components/NotAuthorized";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create Review",
+  description: "Create a review for a product.",
+};
 
 export default async function Page( props: {params: Promise<{ productId: string }> }) {
     const params = await props.params;

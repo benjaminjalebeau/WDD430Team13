@@ -5,6 +5,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getUserData } from "@/app/lib/actions";
 import NotAuthorized from "@/components/NotAuthorized";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edit Review",
+  description: "Edit your review.",
+};
 
 export default async function Page( props: {params: Promise<{ reviewId: string }> }) {
     const params = await props.params;

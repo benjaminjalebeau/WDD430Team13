@@ -11,7 +11,7 @@ const Artisan: React.FC<ArtisanProps> = ({ name, photoURL }) => {
       <div className="w-24 h-24 mb-2">
         <img
           src={photoURL || "/placeholder-profile.jpg"} 
-          alt={name}
+          alt={"Profile picture of " + name}
           className="w-full h-full object-cover rounded-full"
         />
       </div>

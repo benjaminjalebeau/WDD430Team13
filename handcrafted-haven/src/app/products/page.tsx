@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'Products',
+    description: 'Explore our wide range of handcrafted products.',
   };
 
 export default async function Page() {
@@ -14,7 +15,7 @@ export default async function Page() {
     <div className="min-h-screen flex flex-col justify-between">
           <Navbar />
           <main className="flex-grow">
-            <Suspense fallback={<h3>Loading search parameters...</h3>}>
+            <Suspense fallback={<p>Loading search parameters...</p>}>
               <SearchParamsWrapper />
             </Suspense>
           </main>

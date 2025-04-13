@@ -25,22 +25,26 @@ const Navbar = () => {
 
   return (
     <header className="bg-[#8ECAE6] border-b border-gray-300">
+      <a href="#main-content" className="sr-only focus:not-sr-only">
+        Skip to Content
+      </a>
       <nav className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
            {/* Logo */}
-           <a href="/" className="flex items-center">
-            <img
-              src="/logo-handcrafted-haven.jpg" 
-              alt="Handcrafted Haven Logo"
-              className="h-10 w-auto" 
-            />
-          </a>
+           
+          <img
+            src="/logo-handcrafted-haven.jpg" 
+            alt="Handcrafted Haven Company Logo"
+            className="h-10 w-auto" 
+          />
+          
 
           {/* Toggle Button for Mobile */}
           <button
             className="sm:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -52,6 +56,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                aria-label={`Navigate to ${link.name}`}
               >
                 {link.name}
               </a>
@@ -63,16 +68,25 @@ const Navbar = () => {
                 key="My Profile"
                 href="/profile"
                 className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+                aria-label='View your profile page'
               >
                 {session.user?.name.split(" ")[0]}'s Profile
               </a>
-                <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
+                <button 
+                  onClick={() => signOut({ callbackUrl: "/" })} 
+                  className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600"
+                  aria-label='Sign out of your account'
+                >
                   Sign Out
                 </button>
                 
               </>
             ) : (
-              <button onClick={() => signIn()} className="px-4 py-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC]">
+              <button 
+                onClick={() => signIn()} 
+                className="px-4 py-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC]"
+                aria-label='Navigate to sign in page.'
+              >
                 Sign In
               </button>
             )}
@@ -81,6 +95,7 @@ const Navbar = () => {
           {/* Search Bar */}
           <form onSubmit={handleSearch} className="hidden sm:flex items-center space-x-2">
             <div className="w-full max-w-md flex">
+              <label htmlFor='search' className='sr-only'>Search Products or Artisans</label>
               <input
                 type="text"
                 name="search"
@@ -92,6 +107,7 @@ const Navbar = () => {
               <button
                 type="submit"
                 className="px-4 py-2 bg-[#023047] text-white rounded-r-lg hover:bg-[#219EBC] flex items-center justify-center"
+                aria-label='Search products or artisans'
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

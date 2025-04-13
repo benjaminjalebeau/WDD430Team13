@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
     title: 'About Us',
+    description: 'Learn more about Handcrafted Haven, our mission, and what makes us unique.',
   };
 export default function AboutPage() {
     return (
@@ -18,7 +19,7 @@ export default function AboutPage() {
                         </h1>
                         <h2 className="text-2xl text-gray-600 mb-4">
                         Revolutionize the way handcrafted items are discovered, appreciated, and acquired.
-              </h2>
+                        </h2>
                     </div>
                 </section>
 
@@ -58,20 +59,20 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                             {/* Creative products */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">50+ Creative Products</h2>
+                                <h3 className="text-2xl font-bold text-[#C26800] mb-4">50+ Creative Products</h3>
                                 <p className="text-base text-gray-700 leading-6">Explore artistic creations that embody the charm and craftsmanship of handmade products, where beauty meets quality in every detail.</p>
                             </div>
 
                             {/* Passionate Sellers */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">15+ Passionate Sellers</h2>
+                                <h3 className="text-2xl font-bold text-[#C26800] mb-4">15+ Passionate Sellers</h3>
                                 <p className="text-base text-gray-700 leading-6">A thriving community of passionate creators and conscious sellers, dedicated to craftsmanship, 
                                 authenticity, and purpose-driven work.</p>
                             </div>
 
                             {/* Visitors */}
                             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                <h2 className="text-2xl font-bold text-[#C26800] mb-4">1000+ Visitors</h2>
+                                <h3 className="text-2xl font-bold text-[#C26800] mb-4">1000+ Visitors</h3>
                                 <p className="text-base text-gray-700 leading-6">Reach a global audience of passionate, conscious consumers who value quality, 
                                 authenticity, and sustainability.</p>
                             </div>

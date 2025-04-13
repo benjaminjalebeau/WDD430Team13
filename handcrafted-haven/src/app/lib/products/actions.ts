@@ -155,6 +155,6 @@ export async function updateProduct(
         return {message: 'Database Error: ' + error}
     }
 
-    revalidatePath('/products');
-    redirect('/products');
+    revalidatePath('/profile');
+    redirect('/profile');
 };
