@@ -4,24 +4,20 @@ import { fetchReviewsByProductId } from '@/app/lib/reviews/actions';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Product from '@/components/Product';
+import { getUserData } from '@/app/lib/actions';
+import { ReviewView } from '@/app/lib/definitions';
+import Link from 'next/link';
 
-type Review = {
-    id: number;
-    user_id: number;
-    product_id: number;
-    rating: number;
-    comments: string;
-    date: string | Date;
-    user_name: string;
-}
+
 
 // I got this signature from reviews/create/page.tsx
 export default async function Page( props: {params: Promise<{ productId: string }> }) {
     const params = await props.params;
     const id = params.productId;
-    console.log(id);
     const product= await fetchProductDataById(id);
     const reviews = await fetchReviewsByProductId(id);
+    const user = await getUserData();
+
 
     if (!product) {
         notFound();
@@ -49,18 +45,40 @@ export default async function Page( props: {params: Promise<{ productId: string 
 
                 { /* display reveiws for the product */ }
                 <div className="max-w-3xl mx-auto mb-20">
-                    <h2 className="text-xl font-semibold mb-4">Reviews</h2>
+                    <div className="flex justify-between items-center mb-4">
+                        <h2 className="text-xl font-semibold ">Reviews</h2>
+                        <Link
+                            href={`/products/${id}/review/create`}
+                            className="py-2 px-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
+                        >
+                            Review Product
+                        </Link>
+                    </div>
                     <div className="space-y-6">
                         {reviews.length > 0 ? (
-                            reviews.map((review: Review) => (
+                            reviews.map((review: ReviewView) => (
                                 <div key={review.id} className="p-4 border rounded-md bg-white shadow-sm">
-                                  <p className="text-sm text-gray-700 font-semibold mb-1">
-                                    {review.user_name} — <span className="text-yellow-700">★ {review.rating}</span>
-                                  </p>
+                                  <div className="flex justify-between">
+                                    <p className="text-sm text-gray-700 font-semibold mb-1">
+                                        {review.user_name} — <span className="text-yellow-700">★ {review.rating}</span>
+                                    </p>
+                                    {/*Checks to see if logged user owns to review to reveal edit link.*/}
+                                    {user && user.id.toString() === review.user_id.toString() ? (
+                                        <>
+                                        <Link
+                                            href={`/products/${id}/review/${review.id}/edit`}
+                                            className="text-blue-500 hover:underline mb-1 ">
+                                            Edit
+
+                                        </Link>
+                                        </>
+                                    ) : null}
+                                  </div>
                                   <p className="text-gray-800">{review.comments}</p>
                                   <p className="text-xs text-gray-500 mt-1">
                                     Posted on {new Date(review.date).toLocaleDateString()}
                                   </p>
+                                  
                                 </div>
                               ))
                         ) : (

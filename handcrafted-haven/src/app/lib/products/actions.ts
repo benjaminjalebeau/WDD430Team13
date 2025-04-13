@@ -110,8 +110,8 @@ export async function createProduct(prevState: State, formData: FormData) {
     }
     // Revalidating is for making sure that cached/static pages are rerendered. 
     // Adjust URL to appropriate page once created. For now, it'll take you to home.
-    revalidatePath('/products/my-products');
-    redirect('/products/my-products');
+    revalidatePath('/profile');
+    redirect('/profile');
 
 };
 
@@ -155,6 +155,6 @@ export async function updateProduct(
         return {message: 'Database Error: ' + error}
     }
 
-    revalidatePath('/products/my-products');
-    redirect('/products/my-products');
+    revalidatePath('/products');
+    redirect('/products');
 };

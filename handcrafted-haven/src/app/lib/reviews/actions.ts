@@ -84,8 +84,8 @@ export async function createReview(
     }
     // Revalidating is for making sure that cached/static pages are rerendered. 
     // Adjust URL to appropriate page once created. For now, it'll take you to home.
-    revalidatePath('/');
-    redirect('/');
+    revalidatePath(`/products/${productId}/review`);
+    redirect(`/products/${productId}/review`);
 
 };
 
@@ -95,13 +95,13 @@ export async function createReview(
 export async function updateReview(
     reviewId: string,
     userId: string,
+    productId: string,
     prevState: State,
     formData: FormData,
 ) {
     //Checks if logged in user matches user who made review.
     //Checks and grabs logged in user data
-    console.log('User Id: ' + userId);
-    console.log('Review Id: ' + reviewId);
+   
 
     const userData = await getUserData();
     if (!userData) {throw new Error('Not Logged in, Unauthorized.');}
@@ -135,8 +135,8 @@ export async function updateReview(
         return {message: 'Database Error: ' + error}
     }
 
-    revalidatePath('/');
-    redirect('/');
+    revalidatePath(`/products/${productId}/review`);
+    redirect(`/products/${productId}/review`);
 };
 
 type Review = {

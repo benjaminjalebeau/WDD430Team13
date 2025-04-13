@@ -13,7 +13,6 @@ const Navbar = () => {
   // Define the handleSearch function
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log('Search query:', searchQuery);
     router.push(`/products?page=1&search=${searchQuery}`);
     // Add additional logic for handling the search query if needed
     setSearchQuery('');
@@ -22,7 +21,6 @@ const Navbar = () => {
   const links = [
     {name: 'Home', href: '/'},
     {name: 'Products', href: '/products'},
-    {name: 'My profile', href: '/profile'},
   ];
 
   return (
@@ -61,10 +59,17 @@ const Navbar = () => {
             {/* Sign in or Out buttons */}
             {session ? (
               <>
-                <button onClick={() => signOut()} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
+              <a
+                key="My Profile"
+                href="/profile"
+                className="block text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                {session.user?.name.split(" ")[0]}'s Profile
+              </a>
+                <button onClick={() => signOut({ callbackUrl: "/" })} className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-600">
                   Sign Out
                 </button>
-                <span className="mr-4">Hello, {session.user?.name}</span>
+                
               </>
             ) : (
               <button onClick={() => signIn()} className="px-4 py-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC]">

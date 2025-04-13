@@ -20,7 +20,7 @@ async function seedUsers() {
         password TEXT NOT NULL,
         user_type VARCHAR(255) NOT NULL,
         bio VARCHAR(255),
-        photoURL VARCHAR(255) DEFAULT './placeholder-profile.jpg'
+        photoURL VARCHAR(255) DEFAULT '/placeholder-profile.jpg'
         );
     `;
     //Pulls and iterates through data in seed file.
@@ -71,7 +71,7 @@ async function seedProducts() {
         name VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         user_id INT NOT NULL,
-        image_url VARCHAR(255) NOT NULL DEFAULT './placeholder-item.png' ,
+        image_url VARCHAR(255) NOT NULL DEFAULT '/placeholder-item.png' ,
         for_sale BOOL NOT NULL,
         sold BOOL NOT NULL,
         price INT NOT NULL,
