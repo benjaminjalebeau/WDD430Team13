@@ -55,7 +55,7 @@ export default async function Page( props: {params: Promise<{ productId: string 
                             reviews.map((review: Review) => (
                                 <div key={review.id} className="p-4 border rounded-md bg-white shadow-sm">
                                   <p className="text-sm text-gray-700 font-semibold mb-1">
-                                    {review.user_name} — <span className="text-yellow-500">★ {review.rating}</span>
+                                    {review.user_name} — <span className="text-yellow-700">★ {review.rating}</span>
                                   </p>
                                   <p className="text-gray-800">{review.comments}</p>
                                   <p className="text-xs text-gray-500 mt-1">
