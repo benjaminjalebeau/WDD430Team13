@@ -9,7 +9,7 @@ export async function GET(req: Request) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const search = searchParams.get("search") || "";
     const minPrice = searchParams.get("minPrice") ? parseFloat(searchParams.get("minPrice")!) * 100 : 0;
-    const maxPrice = searchParams.get("maxPrice") ? parseFloat(searchParams.get("maxPrice")!) * 100 : 100000000000;
+    const maxPrice = searchParams.get("maxPrice") ? parseFloat(searchParams.get("maxPrice")!) * 100 : 2147483647;
 
     const limit = 6; // Number of products per page
     const offset = (page - 1) * limit;
