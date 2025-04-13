@@ -25,7 +25,7 @@ const Product: React.FC<ProductProps> = ({ id, product_name, description, price,
         <div className="flex justify-between">
           <p
             className={`mt-2 text-sm font-medium ${
-              for_sale ? "text-green-600" : "text-red-600"
+              for_sale ? "text-green-700" : "text-red-600"
             }`}
           >
             {for_sale ? "Available for Sale" : "Not for Sale"} 

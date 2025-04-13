@@ -60,7 +60,7 @@ export default async function Page( props: {params: Promise<{ productId: string 
                                 <div key={review.id} className="p-4 border rounded-md bg-white shadow-sm">
                                   <div className="flex justify-between">
                                     <p className="text-sm text-gray-700 font-semibold mb-1">
-                                        {review.user_name} — <span className="text-yellow-500">★ {review.rating}</span>
+                                        {review.user_name} — <span className="text-yellow-700">★ {review.rating}</span>
                                     </p>
                                     {/*Checks to see if logged user owns to review to reveal edit link.*/}
                                     {user && user.id.toString() === review.user_id.toString() ? (
