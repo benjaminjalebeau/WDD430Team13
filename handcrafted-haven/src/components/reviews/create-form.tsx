@@ -69,7 +69,7 @@ export default function Form({productId} : {productId: string}) {
                     {/*Need to update this link to artisan's product page when added*/}
                     <Link
                     
-                    href="/"
+                    href={`/products/${productId}/review`}
                     className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
                     >
                     Cancel

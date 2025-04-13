@@ -9,8 +9,6 @@ import NotAuthorized from "@/components/NotAuthorized";
 export default async function Page( props: {params: Promise<{ reviewId: string }> }) {
     const params = await props.params;
     const id = params.reviewId;
-    console.log('Page Review Id: ' + id);
-    console.log(id);
     const review= await fetchReviewById(id);
 
     if (!review) {

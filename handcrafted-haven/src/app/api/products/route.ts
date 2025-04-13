@@ -8,6 +8,8 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get("page") || "1", 10);
     const search = searchParams.get("search") || "";
+    const minPrice = searchParams.get("minPrice") ? parseFloat(searchParams.get("minPrice")!) * 100 : 0;
+    const maxPrice = searchParams.get("maxPrice") ? parseFloat(searchParams.get("maxPrice")!) * 100 : 100000000000;
 
     const limit = 6; // Number of products per page
     const offset = (page - 1) * limit;
@@ -27,9 +29,13 @@ export async function GET(req: Request) {
         u.name AS artisan_name
       FROM products
       INNER JOIN users u ON products.user_id = u.id
-      WHERE description ILIKE ${"%" + search + "%"} 
+      WHERE (
+        description ILIKE ${"%" + search + "%"} 
         OR products.name ILIKE ${"%" + search + "%"} 
         OR u.name ILIKE ${"%" + search + "%"}
+        )
+        AND products.price >= ${minPrice}
+        AND products.price <= ${maxPrice}
       ORDER BY listed_date DESC
       LIMIT ${limit} OFFSET ${offset};
     `;

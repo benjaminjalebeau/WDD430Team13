@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   // Get the 3 latest products (sorted by listedDate)
   const latestProducts = (await fetchProducts()).slice(0, 3);
-  console.log(latestProducts);
+
 
   //This needs to be changed to get stuff from DB
   const artisans = (await fetchSellers()).slice(0, 4);

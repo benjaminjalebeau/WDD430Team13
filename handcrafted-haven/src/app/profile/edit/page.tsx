@@ -9,7 +9,7 @@ import NotAuthorized from '@/components/NotAuthorized';
 export default async function Page() {
     const user = await getUserData();
 
-    if (!user || user.user_type === 'basic' ) {
+    if (!user ) {
         return <NotAuthorized />;
     }
 

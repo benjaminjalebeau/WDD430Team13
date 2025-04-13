@@ -5,7 +5,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Products', href: '/products/listings' },
+    { name: 'Products', href: '/products' },
     { name: 'About Us', href: '/about' },
     { name: 'Help', href: '/help' },
     { name: 'Contact Us', href: '/contact' },

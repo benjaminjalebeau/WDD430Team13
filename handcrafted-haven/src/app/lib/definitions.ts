@@ -96,3 +96,13 @@ export interface ProductProps {
   artisan_name: string;
   formattedDate: string;
 }
+
+export type ReviewView = {
+    id: number;
+    user_id: number;
+    product_id: number;
+    rating: number;
+    comments: string;
+    date: string | Date;
+    user_name: string;
+}

@@ -31,7 +31,7 @@ export default function CreateAccountPage() {
 
         // this will reset the errors after corrections are made
         setError("");
-        console.log({ name, email, password, userType, bio });
+      
 
         try {
             // this is going to the createUser function in lib/actions.ts

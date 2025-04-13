@@ -7,7 +7,7 @@ const users = [
         password: 'password',
         userType: 'seller',
         bio: 'I am a seller who can add items',
-        photoURL: "./placeholder-profile.jpg"
+        photoURL: "/placeholder-profile.jpg"
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const users = [
         password: 'password',
         userType: 'seller',
         bio: 'I am a seller who can add items',
-        photoURL: "./placeholder-profile.jpg"
+        photoURL: "/placeholder-profile.jpg"
         
     },
     {
@@ -26,7 +26,7 @@ const users = [
         password: 'password',
         userType: 'seller',
         bio: 'I am a seller who can add items',
-        photoURL: "./placeholder-profile.jpg"
+        photoURL: "/placeholder-profile.jpg"
     },
     {
         id: 4,
@@ -35,7 +35,7 @@ const users = [
         password: 'password',
         userType: 'seller',
         bio: 'I am a seller who can add items',
-        photoURL: "./placeholder-profile.jpg"
+        photoURL: "/placeholder-profile.jpg"
     },
     {
         id: 5,
@@ -44,7 +44,7 @@ const users = [
         password: 'password',
         userType: 'basic',
         bio: 'I am a basic user that can add reviews.',
-        photoURL: "./placeholder-profile.jpg"
+        photoURL: "/placeholder-profile.jpg"
     }
 ];
 

@@ -9,7 +9,7 @@ import {ReviewForm} from '@/app/lib/definitions';
 //Form for adding new products.
 export default function Form({review} : {review: ReviewForm}) {
     const initialState: State = { message: null, errors: {} };
-    const updateReviewWithProductId = updateReview.bind(null, review.id, review.user_id)
+    const updateReviewWithProductId = updateReview.bind(null, review.id, review.user_id, review.product_id)
     const [state, formAction] = useActionState(updateReviewWithProductId, initialState);
     const [rating, setRating] = useState(review.rating);
 
@@ -71,7 +71,7 @@ export default function Form({review} : {review: ReviewForm}) {
                     {/*Need to update this link to artisan's product page when added*/}
                     <Link
                     
-                    href="/"
+                    href={`/products/${review.product_id}/review`}
                     className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
                     >
                     Cancel

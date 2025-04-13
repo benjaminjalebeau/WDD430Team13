@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ProductData } from "@/app/lib/definitions";
 import Product from "@/components/Product";
+import Link from "next/link";
 
 
 
@@ -60,8 +61,15 @@ export default function UserProducts() {
     
       <main className="flex-grow">
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">My Products</h1>
-
+          <div className="mb-6 flex flex-col sm:flex-row items-center justify-center">
+            <h1 className="text-3xl font-bold text-gray-800 mb-6 mr-6">My Products</h1>
+            <Link
+              href="/products/create"
+              className="inline-block mb-6 rounded-md bg-[#023047] px-4 py-2 text-sm text-white transition-colors hover:bg-[#219EBC]"
+            >
+              Add New Product
+            </Link>
+          </div>
           {error && <p className="text-red-500 text-center mb-6">{error}</p>}
 
           {loading ? (
