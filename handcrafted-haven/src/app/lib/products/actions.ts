@@ -20,7 +20,7 @@ const ProductFormSchema = z.object({
     }).min(1, {message: 'Please enter a name for your product.'}),
     description: z.string({
         invalid_type_error: 'Please enter a description for your product. Min 8 Characters',
-    }).min(8, {message: 'Please enter a description for your product. Min 8 Characters'}).max(80),
+    }).min(8, {message: 'Please enter a description for your product. Min 8 Characters'}).max(255),
     //I'm not sure how we will be adding images to the app yet, so change this when figured out. For now it takes a path.
     imageURL: z.string({
         invalid_type_error: 'Please enter the img url/path for your product',
@@ -155,6 +155,27 @@ export async function updateProduct(
         return {message: 'Database Error: ' + error}
     }
 
-    revalidatePath('/products');
-    redirect('/products');
+    revalidatePath('/profile');
+    redirect('/profile');
 };
+
+export async function deleteProduct( productId: string, userId: string ) {
+    
+    const userData = await getUserData();
+    if (!userData || userData.id != userId) {
+    throw new Error('Unauthorized, product does not belong to you.');
+    }
+
+    if (!productId) {
+    throw new Error('Product ID is required.');
+    }
+    try {
+        // Delete the product
+        await sql`DELETE FROM products WHERE id = ${productId};`;
+    
+    } catch (error) {
+        throw new Error('Database Error: ' + error);
+    }
+
+};
+  

@@ -20,6 +20,7 @@ export default function Profile({ user }: { user: LoggedInUser }) {
                 <Link
                     href={`/profile/edit`}
                     className="px-4 py-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
+                    aria-label='Navigate to profile edit page.'
                 >
                     Edit Profile
                 </Link>

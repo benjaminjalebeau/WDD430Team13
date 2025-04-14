@@ -65,6 +65,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
       {/* Search Bar with Price Filters and For Sale Checkbox */}
       <form onSubmit={handleSearch} className="mb-6 flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
         <div className="w-full max-w-md flex">
+          <label htmlFor="search" className="sr-only">Search Products</label>
           <input
             type="text"
             name="search"
@@ -73,6 +74,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
             className="w-full px-4 py-2 border rounded-l-lg text-sm"
           />
         </div>
+        <label htmlFor="minPrice" className="sr-only">Minimum Price</label>
         <input
           type="number"
           name="minPrice"
@@ -80,6 +82,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
           placeholder="Min Price"
           className="px-4 py-2 border rounded text-sm"
         />
+        <label htmlFor="maxPrice" className="sr-only">Maximum Price</label>
         <input
           type="number"
           name="maxPrice"
@@ -91,6 +94,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
         <button
           type="submit"
           className="px-4 py-2 bg-[#023047] text-white rounded-lg hover:bg-[#219EBC] flex items-center justify-center"
+          aria-label="Search button to submit search and filters."
         >
           <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -139,6 +143,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
           onClick={handlePrevious}
           disabled={page === 1}
           className="bg-[#023047] text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-[#219EBC] transition disabled:opacity-50"
+          aria-label="View previous page of products."
         >
           Previous
         </button>
@@ -146,6 +151,7 @@ const ListingsPageContent: React.FC<{ page: number; searchQuery: string; minPric
           onClick={handleNext}
           disabled={!hasNextPage}
           className="bg-[#023047] text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-[#219EBC] transition disabled:opacity-50"
+          aria-label="View next page of products."
         >
           Next
         </button>

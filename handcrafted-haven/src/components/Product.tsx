@@ -12,7 +12,7 @@ const Product: React.FC<ProductProps> = ({ id, product_name, description, price,
       <div className="border rounded-lg shadow-md p-4 bg-white relative">
         <img
           src={image_url || "/placeholder-item.png"} // Use a placeholder if no image is provided
-          alt={product_name}
+          alt={"A Seller's product titled: " + product_name}
           className="w-full h-48 object-cover rounded-md mb-1"
         />
         <div className="flex justify-between">
@@ -32,7 +32,10 @@ const Product: React.FC<ProductProps> = ({ id, product_name, description, price,
           </p>
           
           
-            <Link href={`/products/${id}/review/`} className="mt-2 text-sm font-medium bg-[] text-[#023047] hover:text-[#219EBC] transition ">
+            <Link href={`/products/${id}/review/`} 
+              className="mt-2 text-sm font-medium bg-[] text-[#023047] hover:text-[#219EBC] transition "
+              aria-label="Link to view reviews for this product."
+            >
               View Reviews
             </Link>
           

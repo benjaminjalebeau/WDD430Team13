@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ProductData } from "@/app/lib/definitions";
 import Product from "@/components/Product";
 import Link from "next/link";
+import { deleteProduct } from "@/app/lib/products/actions";
 
 
 
@@ -40,18 +41,18 @@ export default function UserProducts() {
     router.push(`/products/${productId}/edit`);
   };
 
-  const handleDelete = async (productId: string) => {
+  const handleDelete = async (productId: string, productUserId: string) => {
+    
     if (confirm("Are you sure you want to delete this product?")) {
       try {
-        const response = await fetch(`/api/products/${productId}`, {
-          method: "DELETE",
-        });
-        if (!response.ok) {
-          throw new Error("Failed to delete product.");
-        }
+        deleteProduct(productId, productUserId);
+        
         setProducts(products.filter((product) => product.id !== productId));
+        alert("Product successfully removed from account.");
+        
       } catch (err) {
         console.error(err);
+
         alert("Failed to delete product. Please try again.");
       }
     }
@@ -66,6 +67,7 @@ export default function UserProducts() {
             <Link
               href="/products/create"
               className="inline-block mb-6 rounded-md bg-[#023047] px-4 py-2 text-sm text-white transition-colors hover:bg-[#219EBC]"
+              aria-label="Navigate to the create product page."
             >
               Add New Product
             </Link>
@@ -92,12 +94,14 @@ export default function UserProducts() {
                     <button
                       onClick={() => handleUpdate(product.id)}
                       className="px-3 py-1 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"
+                      aria-label={"Update product named "+ product.product_name}
                     >
                       Update
                     </button>
                     <button
-                      onClick={() => handleDelete(product.id)}
+                      onClick={() => handleDelete(product.id, product.user_id)}
                       className="px-3 py-1 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600"
+                      aria-label={"Delete product named "+ product.product_name}
                     >
                       Delete
                     </button>

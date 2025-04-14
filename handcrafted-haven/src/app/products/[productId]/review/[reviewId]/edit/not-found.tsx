@@ -1,5 +1,10 @@
 import Link from 'next/link';
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Not Found",
+  description: "Could not find the requested review.",
+};
 
 export default function NotFound() {
   return (

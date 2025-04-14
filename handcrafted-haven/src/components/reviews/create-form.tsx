@@ -22,6 +22,7 @@ export default function Form({productId} : {productId: string}) {
                         <span className="text-yellow-500 text-1xl">★ </span>
                         <span className="text-sm">Rating (1-5) : </span>
                         <span id="rating-span" className="text-sm">{rating}</span>
+                        <label htmlFor='rating' className='sr-only'>Star Rating 1 through 5</label>
                         <input 
                             className="w-full accent-indigo-600" 
                             type="range" 
@@ -71,10 +72,17 @@ export default function Form({productId} : {productId: string}) {
                     
                     href={`/products/${productId}/review`}
                     className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+                    aria-label='Cancel and return to product reviews page.'
                     >
                     Cancel
                     </Link>
-                    <button type="submit" className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">Post</button>
+                    <button 
+                        type="submit" 
+                        className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                        aria-label='Button to submit review.'
+                    >
+                        Post
+                    </button>
                 </div>
 
             </div>

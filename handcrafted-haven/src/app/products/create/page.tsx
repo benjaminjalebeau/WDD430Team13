@@ -3,6 +3,11 @@ import Footer from "@/components/Footer";
 import Form from "@/components/products/create-form";
 import { getUserData } from "@/app/lib/actions";
 import NotAuthorized from "@/components/NotAuthorized";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+    title: "Create Product",
+    description: "Create a new product to start selling.",
+};
 
 export default async function Page() {
     

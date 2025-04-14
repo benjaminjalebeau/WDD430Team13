@@ -7,6 +7,12 @@ import Product from '@/components/Product';
 import { getUserData } from '@/app/lib/actions';
 import { ReviewView } from '@/app/lib/definitions';
 import Link from 'next/link';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product Reviews",
+  description: "View reviews for a product.",
+};
 
 
 
@@ -46,7 +52,7 @@ export default async function Page( props: {params: Promise<{ productId: string 
                 { /* display reveiws for the product */ }
                 <div className="max-w-3xl mx-auto mb-20">
                     <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-semibold ">Reviews</h2>
+                        <h1 className="text-xl font-semibold ">Reviews</h1>
                         <Link
                             href={`/products/${id}/review/create`}
                             className="py-2 px-2 text-sm font-medium text-white bg-[#023047] rounded-lg hover:bg-[#219EBC] transition"

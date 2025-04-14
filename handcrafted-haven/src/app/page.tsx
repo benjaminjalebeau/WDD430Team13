@@ -48,7 +48,7 @@ export default async function Home() {
               {/* Maybe add carrousel in the future */}
               <img
                 src="/hero-vase.png"
-                alt="Handcrafted Vase"
+                alt="A large handcrafted yellow and red vase"
                 className="w-full max-w-md"
               />
             </div>
@@ -61,9 +61,9 @@ export default async function Home() {
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">
               Explore Our Latest Products
             </h2>
-            <h2 className="text-2xl text-gray-600 mb-4">
+            <h3 className="text-2xl text-gray-600 mb-4">
               Each piece is made with care and attention to detail.
-            </h2>
+            </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {latestProducts.map((product) => (
                 <Product
@@ -97,9 +97,9 @@ export default async function Home() {
             <h2 className="text-3xl font-bold text-gray-800 mb-6 text-left">
               Meet Our Artisans
             </h2>
-            <h2 className="text-2xl text-gray-600 mb-12">
+            <h3 className="text-2xl text-gray-600 mb-12">
               They create functional or decorative items by hand, utilizing traditional techniques and specialized tools, working with materials like wood, metal, clay, textiles, or glass.
-            </h2>
+            </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
               {artisans.map((artisan) => (
                 <Artisan key={artisan.id} name={artisan.name} photoURL={artisan.photoURL} />
