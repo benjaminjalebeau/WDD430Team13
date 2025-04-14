@@ -21,7 +21,7 @@ const ReviewFormSchema = z.object({
         .lte(5, {message: 'Your rating must be 1-5, whole numbers.'}).int(),
     comments: z.string({
         invalid_type_error: 'Please enter your comments for your review. Min 8 Characters',
-    }).min(8, {message: 'Please enter your comments for your review. Min 8 Characters'}).max(80),
+    }).min(8, {message: 'Please enter your comments for your review. Min 8 Characters'}).max(255),
     date: z.string(),
 });
 

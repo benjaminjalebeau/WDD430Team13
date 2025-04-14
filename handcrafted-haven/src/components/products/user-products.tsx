@@ -41,17 +41,21 @@ export default function UserProducts() {
   };
 
   const handleDelete = async (productId: string) => {
+    
     if (confirm("Are you sure you want to delete this product?")) {
       try {
-        const response = await fetch(`/api/products/${productId}`, {
+        const response = await fetch(`/api/my-products/${productId}`, {
           method: "DELETE",
         });
         if (!response.ok) {
-          throw new Error("Failed to delete product.");
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Failed to delete product.");
         }
         setProducts(products.filter((product) => product.id !== productId));
+        alert("Product successfully removed from account.");
       } catch (err) {
         console.error(err);
+
         alert("Failed to delete product. Please try again.");
       }
     }

@@ -20,7 +20,7 @@ const ProductFormSchema = z.object({
     }).min(1, {message: 'Please enter a name for your product.'}),
     description: z.string({
         invalid_type_error: 'Please enter a description for your product. Min 8 Characters',
-    }).min(8, {message: 'Please enter a description for your product. Min 8 Characters'}).max(80),
+    }).min(8, {message: 'Please enter a description for your product. Min 8 Characters'}).max(255),
     //I'm not sure how we will be adding images to the app yet, so change this when figured out. For now it takes a path.
     imageURL: z.string({
         invalid_type_error: 'Please enter the img url/path for your product',
