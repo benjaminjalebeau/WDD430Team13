@@ -158,3 +158,24 @@ export async function updateProduct(
     revalidatePath('/profile');
     redirect('/profile');
 };
+
+export async function deleteProduct( productId: string, userId: string ) {
+    
+    const userData = await getUserData();
+    if (!userData || userData.id != userId) {
+    throw new Error('Unauthorized, product does not belong to you.');
+    }
+
+    if (!productId) {
+    throw new Error('Product ID is required.');
+    }
+    try {
+        // Delete the product
+        await sql`DELETE FROM products WHERE id = ${productId};`;
+    
+    } catch (error) {
+        throw new Error('Database Error: ' + error);
+    }
+
+};
+  
